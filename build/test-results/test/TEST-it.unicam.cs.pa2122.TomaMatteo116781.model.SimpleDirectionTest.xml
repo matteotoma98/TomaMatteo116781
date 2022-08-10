@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirectionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-08-10T15:21:40" hostname="LAPTOP-OK1UH1OH" time="0.017">
+  <properties/>
+  <testcase name="IllegalArgumentExceptionshouldBeThrown()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirectionTest" time="0.014"/>
+  <testcase name="testToString()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirectionTest" time="0.001"/>
+  <testcase name="directionShouldBeCreated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirectionTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
