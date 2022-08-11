@@ -33,7 +33,7 @@ set APP_HOME=%DIRNAME%..
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 
 @rem Add default JVM options here. You can also use JAVA_OPTS and TOMA_MATTEO116781_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="--module-path" "%APP_HOME%\lib" "--module" "it.unicam.cs/it.unicam.cs.pa2122.TomaMatteo116781.MainFX"
+set DEFAULT_JVM_OPTS="--module-path" "%APP_HOME%\lib" "--module" "it.unicam.cs.pa2122.TomaMatteo116781/it.unicam.cs.pa2122.TomaMatteo116781.MainFX"
 
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
@@ -71,7 +71,7 @@ set CLASSPATH=
 set MODULE_PATH=
 
 @rem Execute TomaMatteo116781
-"%JAVA_EXE%" %JAVA_OPTS% %TOMA_MATTEO116781_OPTS% %DEFAULT_JVM_OPTS% %CMD_LINE_ARGS%
+"%JAVA_EXE%" %JAVA_OPTS% %TOMA_MATTEO116781_OPTS% %DEFAULT_JVM_OPTS% %*
 
 :end
 @rem End local scope for the variables with windows NT shell

@@ -25,7 +25,7 @@ public final class UndirectedGraph<D> implements Graph<D> {
     private List<Integer> parents;
     private List<Integer> markedNodes;
     private List<Integer> colors;
-    
+
     /**
      * Crea un grafo non orientato.
      */

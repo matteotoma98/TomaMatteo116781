@@ -1,9 +1,6 @@
 package it.unicam.cs.pa2122.TomaMatteo116781.model;
 
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Cursor;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Directional;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Plane;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Point;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,7 +31,7 @@ class SimpleDirectionTest {
 
     @Test
     public void testToString() {
-        SimpleDirection simpleDirection= new SimpleDirection();
+        SimpleDirection simpleDirection = new SimpleDirection();
         int angle;
         String actual = simpleDirection.toString();
         assertEquals("0", actual);

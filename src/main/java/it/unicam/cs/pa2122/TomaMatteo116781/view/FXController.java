@@ -289,7 +289,9 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
                 "\nDopodich\u00E8 , se vuoi che le istruzioni vengano lette ed eseguite in automatico, premi AUTO." +
                 " Altrimenti, premi avanti per eseguirle una alla volta. Premi indietro per " +
                 "\nPremi indietro per guardare la configurazione precedente." +
-                "\nInfine premi azzera per resettare il piano e tutte le istruzioni mostrate.");
+                "\nPremi azzera per resettare il piano e tutte le istruzioni mostrate." +
+                "\nInfine, premi SALVA dopo aver completato la lettura delle istruzioni per salvare il contenuto del " +
+                "disegno come file.");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             alert.close();
