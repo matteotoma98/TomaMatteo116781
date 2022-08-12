@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -53,7 +54,8 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
     public Button nextButton;
 
 
-    private List<Integer> executeTextFieldInstructions; // Istruzioni eseguite nella textfield da rimuovere dalla lista di tutte le istruzioni
+    private List<Integer> executeTextFieldInstructions; // Istruzioni eseguite nella textfield, da
+    // rimuovere dalla lista di tutte le istruzioni
     private int i; // Contatore istruzione attuale
 
     @FXML
@@ -89,6 +91,7 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
 
     private void createCursor() {
         final URL url = getClass().getResource("/turtleCursor.png");
+        assert url != null;
         final Image imageCursor = new Image(url.toString());
         ImagePattern imagePattern = new ImagePattern(imageCursor);
         Circle cursor = new Circle(controller.getPlane().getHome().getX(), controller.getPlane().getHome().getY(), 20);
@@ -109,8 +112,10 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
     /**
      * Metodo per caricare un file di testo contenente le istruzioni Logo.
      *
-     * @param actionEvent
-     * @throws IOException
+     * @param actionEvent Un evento che indica che si &egrave; verificata un'azione definita dal componente.
+     *                    Questo evento viene generato da un componente (come un pulsante)
+     *                    quando si verifica l'azione specifica del componente (come la pressione)
+     * @throws IOException lancia un'eccezione di tipo Input/Output se non riesce a caricare il file.
      */
     public void caricaFile(ActionEvent actionEvent) throws IOException {
         this.reset(actionEvent);
@@ -123,7 +128,7 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
         if (selectedFile == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(getClass().getResource("/AppIcon.png").toString()));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
             alert.setTitle("");
             alert.setHeaderText("");
             alert.setContentText("Non \u00E8 stato scelto nessun file");
@@ -132,6 +137,7 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
                 alert.close();
             } else alert.close();
         }
+        assert selectedFile != null;
         controller.loadInstructions(selectedFile.getAbsolutePath());
         bottomPane.setVisible(true);
     }
@@ -266,12 +272,13 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
     public void exit(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResource("/AppIcon.png").toString()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
         alert.setTitle("Conferma chiusura");
         alert.setHeaderText("");
         alert.setContentText("Sei sicuro di voler chiudere il programma?");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK)
+
+        if (result.orElse(null) == ButtonType.OK)
             Platform.exit();
     }
 
@@ -281,17 +288,17 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.setHeight(500);
         stage.setWidth(500);
-        stage.getIcons().add(new Image(getClass().getResource("/AppIcon.png").toString()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
         alert.setTitle("Istruzioni");
         alert.setHeaderText("");
-        alert.setContentText("Per prima cosa apri un file in formato txt che contenga le istruzioni logo. " +
-                "Per farlo premi File -> Carica un file." +
-                "\nDopodich\u00E8 , se vuoi che le istruzioni vengano lette ed eseguite in automatico, premi AUTO." +
-                " Altrimenti, premi avanti per eseguirle una alla volta. Premi indietro per " +
-                "\nPremi indietro per guardare la configurazione precedente." +
-                "\nPremi azzera per resettare il piano e tutte le istruzioni mostrate." +
-                "\nInfine, premi SALVA dopo aver completato la lettura delle istruzioni per salvare il contenuto del " +
-                "disegno come file.");
+        alert.setContentText("""
+                Per prima cosa apri un file in formato txt che contenga le istruzioni logo. Per farlo premi File -> Carica un file.
+                Dopodich\u00E8 , se vuoi che le istruzioni vengano lette ed eseguite in automatico, premi AUTO. Altrimenti,\040
+                premi avanti per eseguirle una alla volta.\s
+                Premi indietro per guardare la configurazione precedente.
+                Premi azzera per resettare il piano e tutte le istruzioni mostrate.\040
+                Sar\u00E0 necessario caricare un nuovo file di cui leggere le istruzioni.
+                Infine, premi SALVA dopo aver completato la lettura delle istruzioni per salvare il contenuto del disegno come file.""");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             alert.close();
@@ -310,7 +317,7 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
             if (controller.createLOGOFile(selectedFile.getAbsolutePath())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                stage.getIcons().add(new Image(getClass().getResource("/AppIcon.png").toString()));
+                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
                 alert.setTitle("Salvataggio riuscito");
                 alert.setHeaderText("");
                 alert.setContentText("File creato con successo.");

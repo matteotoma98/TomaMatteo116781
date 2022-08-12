@@ -8,6 +8,5 @@ public class SyntaxInstructionErrorException extends Exception {
 
     public SyntaxInstructionErrorException(String error) {
         super(error);
-
     }
 }

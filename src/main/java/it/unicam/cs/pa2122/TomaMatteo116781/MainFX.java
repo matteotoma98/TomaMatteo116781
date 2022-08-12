@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.Objects;
 
 
 public class MainFX extends Application {
@@ -17,15 +17,15 @@ public class MainFX extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/TomaMatteo116781.fxml"));
-            stage.getIcons().add(new Image(getClass().getResource("/AppIcon.png").toString()));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/TomaMatteo116781.fxml")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
             stage.setTitle("Logo in Java");
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

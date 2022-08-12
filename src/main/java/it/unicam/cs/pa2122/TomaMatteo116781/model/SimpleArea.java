@@ -10,14 +10,13 @@ import java.util.Objects;
 
 /**
  * Classe per implementare un' area chiusa dell' interfaccia it.unicam.cs.2122.TomaMatteo116781.model.interfaces.ClosedArea.
- * La classe è parametrizzata da una linea, e da un punto wrappato da Double.
+ * La classe è parametrizzata da una linea, e da un punto di tipo Double per aumentare la precisione.
  * In questo modo, è possibile rappresentare una semplice area tramite linee chiuse, formate da coppie di punti rappresentati
  * attraverso Double per aumentare la precisione.
  */
-public class SimpleArea implements ClosedArea<Line<Point<Double>>> {
-
-    private final List<Line<Point<Double>>> lines;
-    private final RGBColor color;
+public record SimpleArea(
+        List<Line<Point<Double>>> lines,
+        RGBColor color) implements ClosedArea<Line<Point<Double>>> {
 
     /**
      * Crea un' area chiusa nel piano individuata da un insieme di linee e determinati colori RGB.
@@ -26,9 +25,7 @@ public class SimpleArea implements ClosedArea<Line<Point<Double>>> {
      *              che individuano l' area chiusa.
      * @param color il colore RGB da impostare all' area chiusa.
      */
-    public SimpleArea(List<Line<Point<Double>>> lines, RGBColor color) {
-        this.lines = lines;
-        this.color = color;
+    public SimpleArea {
     }
 
     @Override

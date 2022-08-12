@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.logging.Formatter;
 import java.util.logging.*;
-import java.util.stream.Collectors;
 
 /**
  * Implementazione del controller dell' interfaccia it.unicam.cs.2122.TomaMatteo116781.controller.Controller
@@ -89,8 +88,7 @@ public class DefaultController implements Controller<Point<Double>> {
             //Divide le linee del file con spazi vuoti
             List<String> lst = Files.lines(Path.of(filePath))
                     .map(l -> l.split(" "))
-                    .flatMap(Arrays::stream)
-                    .collect(Collectors.toList());
+                    .flatMap(Arrays::stream).toList();
             if (lst.isEmpty()) {
                 logger.severe("Il file è vuoto");
                 return;
@@ -141,14 +139,13 @@ public class DefaultController implements Controller<Point<Double>> {
         StringBuilder outputFile = new StringBuilder();
         for (int i = 0; i < filepath.length(); i++) {
             outputFile.append(filepath.charAt(i));
-            //  if (i == filepath.lastIndexOf(".txt") - 1) outputFile.append("Output");
         }
         File file = new File(outputFile.toString());
         boolean result = file.createNewFile();
         FileWriter fileWriter = new FileWriter(file);
 
         fileWriter.write("SIZE " + getPlane().getLength() + " " + getPlane().getHeight() + " ");
-        for (Line<Point<Double>> l : this.getPlane().getLines())
+        for (Line<Point<Double>>l : this.getPlane().getLines())
             if (!this.currentPlane.getClosedAreas().contains(l))
                 fileWriter.write(l + "\n");
         for (ClosedArea<Line<Point<Double>>> a : this.getPlane().getClosedAreas())
@@ -169,6 +166,7 @@ public class DefaultController implements Controller<Point<Double>> {
         }
         try {
             double d = Double.parseDouble(s);
+           // System.out.println(d);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -183,80 +181,67 @@ public class DefaultController implements Controller<Point<Double>> {
         StringBuilder log = new StringBuilder();
         boolean defaultCase = false;
         switch (nameCmd[0]) {
-            case "FORWARD": {
+            case "FORWARD" -> {
                 checkLOGOSyntax(nameCmd[0], 2, nameCmd.length);
                 instr = Instruction::forward;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1]);
-                break;
             }
-            case "BACKWARD": {
+            case "BACKWARD" -> {
                 checkLOGOSyntax(nameCmd[0], 2, nameCmd.length);
                 instr = Instruction::backward;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1]);
-                break;
             }
-            case "LEFT": {
+            case "LEFT" -> {
                 checkLOGOSyntax(nameCmd[0], 2, nameCmd.length);
                 instr = Instruction::left;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1]);
-                break;
             }
-            case "RIGHT": {
+            case "RIGHT" -> {
                 checkLOGOSyntax(nameCmd[0], 2, nameCmd.length);
                 instr = Instruction::right;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1]);
-                break;
             }
-            case "CLEARSCREEN": {
+            case "CLEARSCREEN" -> {
                 instr = Instruction::clearScreen;
                 generatedPlane = instr.execute(this.currentPlane);
-                break;
             }
-            case "HOME": {
+            case "HOME" -> {
                 instr = Instruction::home;
                 generatedPlane = instr.execute(this.currentPlane);
-                break;
             }
-            case "PENUP": {
+            case "PENUP" -> {
                 instr = Instruction::penUp;
                 generatedPlane = instr.execute(this.currentPlane);
-                break;
             }
-            case "PENDOWN": {
+            case "PENDOWN" -> {
                 instr = Instruction::penDown;
                 generatedPlane = instr.execute(this.currentPlane);
-                break;
             }
-            case "SETPENCOLOR": {
+            case "SETPENCOLOR" -> {
                 checkLOGOSyntax(nameCmd[0], 4, nameCmd.length);
                 instr = Instruction::setPenColor;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1], nameCmd[2], nameCmd[3]);
-                break;
             }
-            case "SETFILLCOLOR": {
+            case "SETFILLCOLOR" -> {
                 checkLOGOSyntax(nameCmd[0], 4, nameCmd.length);
                 instr = Instruction::setFillColor;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1], nameCmd[2], nameCmd[3]);
-                break;
             }
-            case "SETSCREENCOLOR": {
+            case "SETSCREENCOLOR" -> {
                 checkLOGOSyntax(nameCmd[0], 4, nameCmd.length);
                 instr = Instruction::setScreenColor;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1], nameCmd[2], nameCmd[3]);
-                break;
             }
-            case "SETPENSIZE": {
+            case "SETPENSIZE" -> {
                 instr = Instruction::setPenSize;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1]);
-                break;
             }
-            case "REPEAT": {
+            case "REPEAT" -> {
                 List<String> lstCmd = new ArrayList<>(Arrays.asList(nameCmd).subList(2, nameCmd.length));
                 instr = Instruction::repeat;
                 generatedPlane = instr.execute(this.currentPlane, nameCmd[1], lstCmd);
-                break;
             }
-            default: {
+            default -> {
                 defaultCase = true;
                 if (!isNumeric(nameCmd[0])) {
                     logger.severe(" Istruzione all'interno del file non esistente: " + instruction);
@@ -265,7 +250,6 @@ public class DefaultController implements Controller<Point<Double>> {
                 }
                 logger.severe("Istruzione non eseguita: " + instruction + " assicurarsi che ci sia un'istruzione " +
                         "per linea");
-                break;
             }
         }
         if (!defaultCase) {
@@ -287,6 +271,7 @@ public class DefaultController implements Controller<Point<Double>> {
         this.configurationInstructions = new LinkedList<>();
         this.previousPlane = new LinkedList<>();
         this.nextPlane = new LinkedList<>();
+        this.allInstructions= new LinkedList<>();
         logger.info("Tutte le configurazioni sono state cancellate");
     }
 

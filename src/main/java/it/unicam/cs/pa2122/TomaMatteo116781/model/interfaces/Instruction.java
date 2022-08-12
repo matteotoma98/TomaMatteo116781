@@ -36,9 +36,9 @@ public interface Instruction<C> {
      * @param plane     il piano di disegno in cui direzionare il cursore.
      * @param angle     l' angolo per cui spostarsi nella direzione specificata.
      * @return un piano contenente le modifiche dopo aver eseguito l' istruzione 'LEFT' o 'RIGHT'.
-     * @throws IllegalArgumentException se l'angolo speficiato &egrave; fuori dal range predefinito (0-360).
+     * @throws IllegalArgumentException se l'angolo specificato &egrave; fuori dal range predefinito (0-360).
      */
-    private static Plane<Point<Double>> direct(char direction, Plane<Point<Double>> plane, Object angle) {
+    static Plane<Point<Double>> direct(char direction, Plane<Point<Double>> plane, Object angle) {
         Plane<Point<Double>> p = new DefaultPlane(plane);
         int degrees = Integer.parseInt("" + angle);
         if (degrees < 0 || degrees > 360) throw new IllegalArgumentException("Angle out of range");
@@ -63,7 +63,7 @@ public interface Instruction<C> {
      * @return il piano aggiornato con le modifiche dopo aver eseguito l' istruzione 'FORWARD' o 'BACKWARD'.
      * @throws IllegalArgumentException se la distanza specificata &egrave; minore di 0.
      */
-    private static Plane<Point<Double>> move(char operator, Plane<Point<Double>> plane, Object distance) {
+    static Plane<Point<Double>> move(char operator, Plane<Point<Double>> plane, Object distance) {
         int dist = Integer.parseInt("" + distance);
         if (dist < 0) throw new IllegalArgumentException("Hai inserito una distanza negativa. Inseriscine una > di 0 ");
         Plane<Point<Double>> p = new DefaultPlane(plane);
@@ -79,8 +79,8 @@ public interface Instruction<C> {
 
         checkCursorAtBorder(p, newPosition, oldPosition); //controlla che il cursore sia al bordo del piano
 
-        //Istanzia una linea
-        it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Line<Point<Double>> l = new Segment<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+
+        Line<Point<Double>> l = new Segment<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         if (p.getCursor().isPen()) {
             p.addLine(l);
             Logger.getGlobal().info("Linea creata: " + l);
@@ -100,21 +100,34 @@ public interface Instruction<C> {
      * @param plane             il piano scelto.
      * @param newCursorPosition la nuova posizione del cursore da dover controllare.
      */
-    private static void checkCursorAtBorder(Plane<Point<Double>> plane, Point<Double> newCursorPosition, Point<Double> oldCursorPosition) {
+    static void checkCursorAtBorder(Plane<Point<Double>> plane, Point<Double> newCursorPosition, Point<Double> oldCursorPosition) {
         Segment<Point<Double>> xDownAxis = new Segment<>(plane.getDownLeftPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
                 xUpAxis = new Segment<>(plane.getUpLeftPoint(), plane.getUpRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
                 yLeftAxis = new Segment<>(plane.getUpLeftPoint(), plane.getDownLeftPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
                 yRightAxis = new Segment<>(plane.getUpRightPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
-        it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Line<Point<Double>> line = new Segment<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+       Line<Point<Double>> line = new Segment<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
         Optional<Point<Double>> intersectionPoint = Optional.empty();
-        if (newCursorPosition.getY() >= plane.getHeight()) intersectionPoint = Plane.intersect(line, xUpAxis);
-        if (newCursorPosition.getY() < 0) intersectionPoint = Plane.intersect(line, xDownAxis);
-        if (newCursorPosition.getX() >= plane.getLength()) intersectionPoint = Plane.intersect(line, yRightAxis);
-        if (newCursorPosition.getX() < 0) intersectionPoint = Plane.intersect(line, yLeftAxis);
+        if (newCursorPosition.getY() >= plane.getHeight()) {
+            intersectionPoint = Plane.intersect(line, xUpAxis);
+            Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
+        }
+        if (newCursorPosition.getY() < 0) {
+            intersectionPoint = Plane.intersect(line, xDownAxis);
+            Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
+        }
+        if (newCursorPosition.getX() >= plane.getLength()) {
+            intersectionPoint = Plane.intersect(line, yRightAxis);
+            Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
+        }
+        if (newCursorPosition.getX() < 0) {
+            intersectionPoint = Plane.intersect(line, yLeftAxis);
+            Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
+        }
         plane.getCursor().setPosition(intersectionPoint.orElse(newCursorPosition));
-        Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
+        // Logger.getGlobal().info("Plane if <) della height " + Plane.intersect(line,xUpAxis));
+        //  Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
         Logger.getGlobal().info("Posizione attuale del cursore " + plane.getCursorPosition());
     }
 
@@ -174,7 +187,7 @@ public interface Instruction<C> {
 
     /**
      * Metodo che implementa l' istruzione 'CLEARSCREEN'.
-     * Cancella il disegno, liberando il biano di lavoro.
+     * Cancella il disegno, liberando il piano di lavoro.
      *
      * @param plane il piano in cui cancellare il disegno
      * @param args  in questo caso nessun argomento (quindi un array vuoto)
@@ -311,75 +324,65 @@ public interface Instruction<C> {
     static Plane<Point<Double>> repeat(Plane<Point<Double>> plane, Object... args) {
         Plane<Point<Double>> p = new DefaultPlane(plane);
         Instruction<Point<Double>> instr;
+
+        @SuppressWarnings("unchecked")
         List<String> cmds = (List<String>) args[1];
+
         int n = Integer.parseInt("" + args[0]);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < cmds.size(); j++)
                 switch (cmds.get(j)) {
-                    case "FORWARD": {
+                    case "FORWARD" -> {
                         instr = Instruction::forward;
                         p = instr.execute(p, cmds.get(j + 1));
-                        break;
                     }
-                    case "BACKWARD": {
+                    case "BACKWARD" -> {
                         instr = Instruction::backward;
                         p = instr.execute(p, cmds.get(j + 1));
-                        break;
                     }
-                    case "LEFT": {
+                    case "LEFT" -> {
                         instr = Instruction::left;
                         p = instr.execute(p, cmds.get(j + 1));
-                        break;
                     }
-                    case "RIGHT": {
+                    case "RIGHT" -> {
                         instr = Instruction::right;
                         p = instr.execute(p, cmds.get(j + 1));
-                        break;
                     }
-                    case "CLEARSCREEN": {
+                    case "CLEARSCREEN" -> {
                         instr = Instruction::clearScreen;
                         p = instr.execute(p);
-                        break;
                     }
-                    case "HOME": {
+                    case "HOME" -> {
                         instr = Instruction::home;
                         p = instr.execute(p);
-                        break;
                     }
-                    case "PENUP": {
+                    case "PENUP" -> {
                         instr = Instruction::penUp;
                         p = instr.execute(p);
-                        break;
                     }
-                    case "PENDOWN": {
+                    case "PENDOWN" -> {
                         instr = Instruction::penDown;
                         p = instr.execute(p);
-                        break;
                     }
-                    case "SETPENCOLOR": {
+                    case "SETPENCOLOR" -> {
                         instr = Instruction::setPenColor;
                         p = instr.execute(p, cmds.get(j + 1), cmds.get(j + 2), cmds.get(j + 3));
-                        break;
                     }
-                    case "SETFILLCOLOR": {
+                    case "SETFILLCOLOR" -> {
                         instr = Instruction::setFillColor;
                         p = instr.execute(p, cmds.get(j + 1), cmds.get(j + 2), cmds.get(j + 3));
-                        break;
                     }
-                    case "SETSCREENCOLOR": {
+                    case "SETSCREENCOLOR" -> {
                         instr = Instruction::setScreenColor;
                         p = instr.execute(p, cmds.get(j + 1), cmds.get(j + 2), cmds.get(j + 3));
-                        break;
                     }
-                    case "SETPENSIZE": {
+                    case "SETPENSIZE" -> {
                         instr = Instruction::setPenSize;
                         p = instr.execute(p, cmds.get(j + 1));
-                        break;
                     }
-                    case "REPEAT": {
+                    case "REPEAT" -> {
                         instr = Instruction::repeat;
                         p = instr.execute(p, cmds.get(j));
-                        break;
                     }
                 }
         }

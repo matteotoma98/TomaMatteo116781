@@ -17,7 +17,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
     private final Graph<Point<Double>> graph;
     private final Map<Point<Double>, Integer> points;
     private RGBColor backgroundColor;
-    private PlaneUpdateSupport<Point<Double>> planeUpdateSupport;
+    private final PlaneUpdateSupport<Point<Double>> planeUpdateSupport;
 
     /**
      * Crea un piano geometrico con le caratteristiche di default del piano di disegno.
@@ -30,13 +30,13 @@ public class DefaultPlane implements Plane<Point<Double>> {
     }
 
     /**
-     * Crea un piano bidimensionale con parametri lunghezza, altezza , posizione del punto Home e posizione del punto origin.
+     * Crea un piano bidimensionale con parametri lunghezza, altezza, posizione del punto Home e posizione del punto origin.
      *
      * @param length la base del piano.
      * @param height l' altezza del piano.
      * @param home   la posizione al centro del piano.
      * @param origin l' origine del piano.
-     * @throws NullPointerException     se la posizione home o la posizione origine &egrave; null
+     * @throws NullPointerException se la posizione home o la posizione origine &egrave; null
      * @throws IllegalArgumentException se la base del piano o l' altezza sono < di due o se la posizione home e
      *                                  la posizione origine sono punti non appartenenti al piano.
      */
@@ -183,12 +183,12 @@ public class DefaultPlane implements Plane<Point<Double>> {
     public int getNumPoints() {
         return this.points.size();
     }
-
+    @SuppressWarnings("unchecked")
     @Override
     public Cursor<Point<Double>, SimpleDirection> getCursor() {
         return this.cursor;
     }
-
+    @SuppressWarnings("unchecked")
     @Override
     public Map<Point<Double>, Integer> getPoints() {
         return this.points;
@@ -209,9 +209,9 @@ public class DefaultPlane implements Plane<Point<Double>> {
             l = new ArrayList<>();
             for (int i = 0; i < area.get().size(); i++) {
                 if (i == area.get().size() - 1)
-                    l.add(this.lineExistsBetweenTwoPoints(area.get().get(0), area.get().get(i)).get());
+                    l.add(this.lineExistsBetweenTwoPoints(area.orElse(null).get(0), area.orElse(null).get(i)).orElse(null));
                 else
-                    l.add(this.lineExistsBetweenTwoPoints(area.get().get(i), area.get().get(i + 1)).get());
+                    l.add(this.lineExistsBetweenTwoPoints(area.orElse(null).get(i), area.orElse(null).get(i + 1)).orElse(null));
             }
             ClosedArea<Line<Point<Double>>> closedArea = new SimpleArea(l, this.cursor.getAreaColor());
             this.closedAreas.offer(closedArea);
@@ -302,7 +302,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
                 "\n}";
     }
 
-    //Metodi listenere per aggiornare e rimuovere il piano.
+    //Metodi listener per aggiornare e rimuovere il piano.
 
     @Override
     public synchronized void addPlaneUpdateListener(PlaneUpdateListener<Point<Double>> listener) {

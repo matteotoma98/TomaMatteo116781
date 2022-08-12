@@ -5,11 +5,7 @@ import java.util.Objects;
 /**
  * Classe usata per rappresentare i colori rgb per creare le combinazioni dei colori.
  */
-public class RGBColor {
-    private final int r;
-    private final int g;
-    private final int b;
-
+public record RGBColor(int r, int g, int b) {
     /**
      * Crea un colore RGB con i colori rosso, verde e blu con range tra 0 e 255.
      *
@@ -18,11 +14,8 @@ public class RGBColor {
      * @param b colore blu.
      * @throws IllegalArgumentException se uno o pi&ugrave; parametri &egrave; fuori dal range previsto.
      */
-    public RGBColor(int r, int g, int b) {
+    public RGBColor {
         rgbRangeIsCorrect(r, g, b);
-        this.r = r;
-        this.g = g;
-        this.b = b;
     }
 
     private void rgbRangeIsCorrect(int r, int g, int b) {

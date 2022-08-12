@@ -10,12 +10,8 @@ import java.util.Objects;
  *
  * @param <C> il tipo parametrico per le coordinate del punto.
  */
-public class Segment<C> implements Line<C> {
-
-    private final C startingPoint;
-    private final C endPoint;
-    private final RGBColor color;
-    private final int size;
+public record Segment<C>(C startingPoint, C endPoint, RGBColor color,
+                         int size) implements Line<C> {
 
     /**
      * Crea una linea generica.
@@ -25,11 +21,7 @@ public class Segment<C> implements Line<C> {
      * @param color         il colore della linea.
      * @param size          lo spessore della linea.
      */
-    public Segment(C startingPoint, C endPoint, RGBColor color, int size) {
-        this.startingPoint = startingPoint;
-        this.endPoint = endPoint;
-        this.color = color;
-        this.size = size;
+    public Segment {
     }
 
     @Override

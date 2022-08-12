@@ -10,7 +10,7 @@ import java.util.*;
  * Si utilizza una mappa di nodi, composti da campi Integer e D (che sono i dati dei nodi).
  * - Integer contiene l'indice che viene assegnato al determinato grafo.
  * - arcs rappresenta gli archi tra i nodi, e la lista markedNodes i nodi che hanno altri nodi vicini.
- * - iterations rappresenta il numero di iterazioni da fare
+ * - iterations rappresenta il numero d' iterazioni da fare
  *
  * @param <D> il tipo parametrico per il dato (l'oggetto) che il nodo contiene
  */

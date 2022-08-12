@@ -18,7 +18,7 @@ public interface Plane<C> {
      *
      * @param a la prima linea.
      * @param b la seconda linea.
-     * @return il punto di intersezione tra la linea a e la linea b se esiste, Optional.isEmpty() altrimenti.
+     * @return il punto d'intersezione tra la linea a e la linea b se esiste, Optional.isEmpty() altrimenti.
      */
     static Optional<Point<Double>> intersect(Line<Point<Double>> a, Line<Point<Double>> b) {
         //si prendono le coordinate X e Y dei due estremi delle linee

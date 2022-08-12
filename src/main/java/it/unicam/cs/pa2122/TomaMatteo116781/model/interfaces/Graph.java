@@ -5,12 +5,11 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.GraphNode;
 import java.util.List;
 import java.util.Map;
 
-/**
- * La seguente interfaccia serve per rappresentare i dati tramite dei grafi, per cercare quelli che formano un ciclo e rimuoverli.
- */
-
-/**
- * Rappresenta un grafo per controllare i dati adiacenti .
+/** La seguente interfaccia serve per rappresentare i dati tramite dei grafi, per cercare quelli che formano un ciclo e rimuoverli.
+ *
+ *
+ *
+ * Rappresenta un grafo per controllare i dati adiacenti.
  * Se c'&egrave; un ciclo nel grafo, questo viene ritornato e rimosso dal grafo.
  *
  * @param <D> il tipo parametrico per i dati contenuti nodi.
@@ -26,7 +25,7 @@ public interface Graph<D> {
     void cycleDFS(GraphNode<Integer, D> u, GraphNode<Integer, D> p);
 
     /**
-     * Aggiunge un arco(u,v) a questo grafo.
+     * Aggiunge un arco(u, v) a questo grafo.
      *
      * @param u il nodo u dell'arco
      * @param v il nodo v dell'arco

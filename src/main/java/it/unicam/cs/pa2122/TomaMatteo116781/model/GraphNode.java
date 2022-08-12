@@ -8,7 +8,7 @@ import java.util.Objects;
  * @param <L> il tipo parametrico per i nomi dei nodi.
  * @param <D> il tipo parametrico per il dato nel nodo.
  */
-public class GraphNode<L, D> {
+public record GraphNode<L, D>(L name, D data) {
     /**
      * Colori da associare ai nodi
      */
@@ -18,20 +18,13 @@ public class GraphNode<L, D> {
 
     public static int COLOR_BLACK = 2;
 
-    private final L name;
-
-    private final D data;
-
-
     /**
      * Crea un nodo con l' etichetta e l' oggetto da contenere specificati.
      *
      * @param name l' etichetta del nodo.
      * @param data il dato da contenere nel nodo.
      */
-    public GraphNode(L name, D data) {
-        this.name = name;
-        this.data = data;
+    public GraphNode {
     }
 
     /**

@@ -60,7 +60,7 @@ public interface Directional<D> {
     boolean equals(Object o);
 
     /**
-     * Restituisce l'hashcode per mappare l’indirizzo dell’area di memoria dove la direzione &egrave; allocata con un intero univoco.
+     * Restituisce l' hashcode per mappare l’indirizzo dell’area di memoria dove la direzione &egrave; allocata con un intero univoco.
      *
      * @return il valore hash code per la direzione
      */

@@ -81,14 +81,14 @@ public interface Controller<C> {
     Deque<String> getConfigurationInstructions();
 
     /**
-     * Apre la schermata per salvare il file inserendo un nome del file a scelta.
+     * Apre la schermata per salvare il file inserendo un nome del file arbitrario.
      * Nel file vengono memorizzate tutte le linee presenti nel piano e tutte le aree chiuse che formano la figura,
      * ognuna di queste su una riga del file, comprese tutte le loro caratteristiche (posizione, colori).
      * All'inizio del file è definito il SIZE delle aree chiusa formata dalle linee, data da base e altezza.
      * * @param filepath il percorso assoluto o relativo del file utilizzato per le istruzioni.
      * * @return true se il file non esisteva ed &egrave; stato creato con successo, false altrimenti.
      *
-     * @throws IOException se ci sono errori di Input/Output con il file.
+     * @throws IOException se ci sono errori d'Input/Output con il file.
      */
     boolean createLOGOFile(String filepath) throws IOException;
 

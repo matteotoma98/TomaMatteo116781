@@ -44,7 +44,7 @@ public interface ClosedArea<L> {
     boolean equals(Object o);
 
     /**
-     * Restituisce l'hashcode per mappare l’indirizzo dell’area di memoria dove l'area &egrave; allocata con un intero univoco.
+     * Restituisce l' hashcode per mappare l’indirizzo dell’area di memoria dove l'area &egrave; allocata con un intero univoco.
      *
      * @return il valore hash code dell' area chiusa.
      */

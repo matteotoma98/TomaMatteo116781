@@ -6,10 +6,10 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
  * Rappresenta un generico cursore.
  * Gli attributi sono:
  * &#9679; Posizione: posizione del cursore
- * &#9679; Direzione: indica l’angolo verso cui &egrave; puntato il cursore. L’angolo viene rappresentato con un intero nell’intervallo [0,360] dove lo 0 indica la direzione orizzontale verso destra (ore 3, se consideriamo un orologio).
+ * &#9679; Direzione: indica l’angolo verso cui &egrave; puntato il cursore. L’angolo viene rappresentato con un intero nell’intervallo [0,360] dove lo zero indica la direzione orizzontale verso destra.
  * &#9679; Colore Linea: indica il colore della linea prodotta dal cursore come conseguenza di uno spostamento.
  * &#9679; Colore Area: indica il colore dell’area che viene colorata quando una serie di linee producono un’area chiusa.
- * &#9679; Plot: &egrave; un parametro booleano che sta ad indicare se durante uno spostamento il cursore genera o meno un tracciato.
+ * &#9679; Plot: &egrave; un parametro booleano che sta a indicare se durante uno spostamento il cursore genera o meno un tracciato.
  *
  * @param <C> rappresenta il tipo parametrico delle coordinate del punto nel piano.
  * @param <D> rappresenta il tipo parametrico per la direzione in cui punta il cursore nel piano.
@@ -17,7 +17,7 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
 public interface Cursor<C, D extends Directional<?>> {
 
     /**
-     * Restituisce le coordinate X e Y  della posizione del cursore.
+     * Restituisce le coordinate X e Y della posizione del cursore.
      *
      * @return le coordinate della posizione del cursore.
      */
@@ -39,7 +39,7 @@ public interface Cursor<C, D extends Directional<?>> {
 
     /**
      * Imposta la direzione verso cui il cursore dovr&agrave; puntare.
-     * Per default, il cursore &egrave; posizionato nella home, ha una direzione di gradi 0, il colore della linea &egrave; il nero,
+     * Per default, il cursore &egrave; posizionato nella home, ha una direzione di zero gradi, il colore della linea &egrave; il nero,
      * mentre il colore dell’area &egrave; il bianco (come il colore di sfondo di default).
      *
      * @param direction la nuova direzione verso cui il cursore dovr&agrave; puntare
