@@ -2,6 +2,7 @@ package it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.PlaneUpdateSupport;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirection;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -109,11 +110,10 @@ public interface Plane<C> {
 
     /**
      * Ritorna il cursore che si trova attualmente nel piano.
-     *
+     * SimpleDirection per la direzione del cursore (l'angolo).
      * @return il cursore situato nel piano.
      */
-    <D extends Directional<?>> Cursor<C, D> getCursor();
-
+    <D extends Directional<?>> Cursor<C, SimpleDirection> getCursor();
     /**
      * Ritorna l' insieme di tutte le aree chiuse presenti nel piano in ordine FIFO.
      *
@@ -134,7 +134,7 @@ public interface Plane<C> {
      * @param point il punto di cui controllare l' appartenenza al piano.
      * @return true se un punto specificato appartiene al piano, false altrimenti.
      */
-    boolean bePartOfPlane(C point);
+    boolean isPartOfPlane(C point);
 
     /**
      * Ritorna le coordinate del punto sull' angolo del in basso a sinistra piano.
@@ -166,11 +166,10 @@ public interface Plane<C> {
 
     /**
      * Ritorna la mappa con tutti i punti (e le loro caratteristiche).
-     *
-     * @param <L> il tipo parametrico per identificare il punto.
+     * Tipo integer per i punti.
      * @return la mappa dei punti con le caratteristiche che li identificano.
      */
-    <L> Map<C, L> getPoints();
+    <L> Map<C, Integer> getPoints();
 
     /**
      * Restituisce il grafo dei punti nel piano.
@@ -202,7 +201,7 @@ public interface Plane<C> {
      */
     default Set<Line<C>> getLinesAt(C point) {
         Set<Line<C>> lines = new HashSet<>();
-        if (bePartOfPlane(point)) {
+        if (isPartOfPlane(point)) {
             /* Prende tutte le linee e poi filtra solo quelle che hanno come punto d'inizio
             il punto passato come parametro e come punto di fine il punto passato come parametro.
             Tramite collect aggiunge man mano le linee al set lines */

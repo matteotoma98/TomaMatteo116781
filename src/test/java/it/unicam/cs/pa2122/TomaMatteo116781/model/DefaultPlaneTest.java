@@ -172,17 +172,17 @@ class DefaultPlaneTest {
     @Test
     public void pointsShouldBePartOfPlane() {
         Plane<Point<Double>> plane = new DefaultPlane(50, 70);
-        assertTrue(plane.bePartOfPlane(Point.cartesianPoint(0, 0)));
+        assertTrue(plane.isPartOfPlane(Point.cartesianPoint(0, 0)));
         assertEquals(Point.cartesianPoint(0, 0), plane.getDownLeftPoint());
-        assertTrue(plane.bePartOfPlane(Point.cartesianPoint(49, 69)));
+        assertTrue(plane.isPartOfPlane(Point.cartesianPoint(49, 69)));
         assertEquals(Point.cartesianPoint(49, 69), plane.getUpRightPoint());
-        assertTrue(plane.bePartOfPlane(Point.cartesianPoint(0, 49)));
+        assertTrue(plane.isPartOfPlane(Point.cartesianPoint(0, 49)));
         assertEquals(Point.cartesianPoint(49, 0), plane.getDownRightPoint());
-        assertTrue(plane.bePartOfPlane(Point.cartesianPoint(0, 69)));
+        assertTrue(plane.isPartOfPlane(Point.cartesianPoint(0, 69)));
         assertEquals(Point.cartesianPoint(0, 69), plane.getUpLeftPoint());
-        assertFalse(plane.bePartOfPlane(Point.cartesianPoint(110, 30)));
-        assertTrue(plane.bePartOfPlane(Point.cartesianPoint(49, 69)));
-        assertFalse(plane.bePartOfPlane(Point.cartesianPoint(50, 70)));
+        assertFalse(plane.isPartOfPlane(Point.cartesianPoint(110, 30)));
+        assertTrue(plane.isPartOfPlane(Point.cartesianPoint(49, 69)));
+        assertFalse(plane.isPartOfPlane(Point.cartesianPoint(50, 70)));
     }
 
 }

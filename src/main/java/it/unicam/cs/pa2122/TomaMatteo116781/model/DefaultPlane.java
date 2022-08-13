@@ -62,9 +62,9 @@ public class DefaultPlane implements Plane<Point<Double>> {
         this.points = new HashMap<>();
         this.planeUpdateSupport = new PlaneUpdateSupport<>();
 
-        if (!bePartOfPlane(home))
+        if (!isPartOfPlane(home))
             throw new IllegalArgumentException("La posizione del punto home non appartiene al piano.");
-        if (!bePartOfPlane(origin))
+        if (!isPartOfPlane(origin))
             throw new IllegalArgumentException("La posizione del punto di origine non appartiene al piano.");
 
     }
@@ -144,7 +144,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
     }
 
     @Override
-    public boolean bePartOfPlane(Point<Double> point) {
+    public boolean isPartOfPlane(Point<Double> point) {
         return (point.getY() >= 0 && point.getY() < this.getHeight()
                 && point.getX() >= 0 && point.getX() < this.getLength());
     }
@@ -183,13 +183,14 @@ public class DefaultPlane implements Plane<Point<Double>> {
     public int getNumPoints() {
         return this.points.size();
     }
-    @SuppressWarnings("unchecked")
+
     @Override
+    @SuppressWarnings("unchecked")
     public Cursor<Point<Double>, SimpleDirection> getCursor() {
         return this.cursor;
     }
+
     @SuppressWarnings("unchecked")
-    @Override
     public Map<Point<Double>, Integer> getPoints() {
         return this.points;
     }
@@ -302,7 +303,9 @@ public class DefaultPlane implements Plane<Point<Double>> {
                 "\n}";
     }
 
-    //Metodi listener per aggiornare e rimuovere il piano.
+    /**
+     * Metodi listener per aggiornare e rimuovere il piano.
+     */
 
     @Override
     public synchronized void addPlaneUpdateListener(PlaneUpdateListener<Point<Double>> listener) {

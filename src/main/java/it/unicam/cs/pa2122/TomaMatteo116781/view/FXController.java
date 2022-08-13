@@ -137,8 +137,8 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
                 alert.close();
             } else alert.close();
         }
-        assert selectedFile != null;
-        controller.loadInstructions(selectedFile.getAbsolutePath());
+        if (selectedFile != null) controller.loadInstructions(selectedFile.getAbsolutePath());
+
         bottomPane.setVisible(true);
     }
 

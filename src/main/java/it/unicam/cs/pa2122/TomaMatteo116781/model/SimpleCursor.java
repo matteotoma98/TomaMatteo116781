@@ -57,7 +57,7 @@ public class SimpleCursor implements Cursor<Point<Double>, SimpleDirection> {
         if (areaColor == null)
             throw new NullPointerException("Null fill area color specified!");
         this.plane = plane;
-        if (!this.plane.bePartOfPlane(position))
+        if (!this.plane.isPartOfPlane(position))
             throw new IllegalArgumentException("Invalid cursor position in this plane!");
         this.position = position;
         this.direction = direction;
