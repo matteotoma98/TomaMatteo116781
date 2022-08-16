@@ -185,12 +185,10 @@ public class DefaultPlane implements Plane<Point<Double>> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public Cursor<Point<Double>, SimpleDirection> getCursor() {
         return this.cursor;
     }
 
-    @SuppressWarnings("unchecked")
     public Map<Point<Double>, Integer> getPoints() {
         return this.points;
     }

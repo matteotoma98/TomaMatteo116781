@@ -152,7 +152,7 @@ class InstructionTest {
 
     @Test
     public void penColorShouldBeChanged() {
-        Plane<Point<Double>> plane = new DefaultPlane(400, 800);
+        Plane<Point<Double>> plane = new DefaultPlane(500, 1000);
         assertEquals(plane.getCursor().getLineColor(), new RGBColor(0, 0, 0));
         Instruction<Point<Double>> i = Instruction::setPenColor;
         plane = i.execute(plane, 255, 0, 0);    // RED
@@ -165,7 +165,7 @@ class InstructionTest {
 
     @Test
     public void fillColorShouldBeChanged() {
-        Plane<Point<Double>> plane = new DefaultPlane(400, 800);
+        Plane<Point<Double>> plane = new DefaultPlane(500, 1000);
         assertEquals(plane.getCursor().getAreaColor(), new RGBColor(255, 255, 255));
         Instruction<Point<Double>> i = Instruction::setFillColor;
         plane = i.execute(plane, 0, 255, 0);    // MAGENTA

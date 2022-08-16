@@ -85,10 +85,9 @@ public record RGBColor(int r, int g, int b) {
      */
     @Override
     public String toString() {
-        return "RGBColors{" +
-                "r=" + this.r +
-                ", g=" + this.g +
-                ", b=" + this.b +
-                '}';
+        return ( r + " "
+                 + g + " "
+                 + b)
+                ;
     }
 }

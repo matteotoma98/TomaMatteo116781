@@ -2,7 +2,10 @@ package it.unicam.cs.pa2122.TomaMatteo116781.controller;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.SyntaxInstructionErrorException;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.*;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Line;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Plane;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Point;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -136,6 +139,7 @@ public class DefaultController implements Controller<Point<Double>> {
 
     @Override
     public boolean createLOGOFile(String filepath) throws IOException {
+
         StringBuilder outputFile = new StringBuilder();
         for (int i = 0; i < filepath.length(); i++) {
             outputFile.append(filepath.charAt(i));
@@ -143,13 +147,18 @@ public class DefaultController implements Controller<Point<Double>> {
         File file = new File(outputFile.toString());
         boolean result = file.createNewFile();
         FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write("SIZE " + getPlane().getLength() + " " + getPlane().getHeight() + " "
+                + this.currentPlane.getCursor().getAreaColor() + "\n");
 
-        fileWriter.write("SIZE " + getPlane().getLength() + " " + getPlane().getHeight() + " ");
-        for (Line<Point<Double>>l : this.getPlane().getLines())
-            if (!this.currentPlane.getClosedAreas().contains(l))
-                fileWriter.write(l + "\n");
-        for (ClosedArea<Line<Point<Double>>> a : this.getPlane().getClosedAreas())
-            fileWriter.write(a + "\n");
+        fileWriter.write("POLYGON " + this.getPlane().getNumLines() + " " + this.currentPlane.getCursor().getAreaColor() + "\n");
+        for (Line<Point<Double>> l : this.getPlane().getLines()) {
+            if (!this.currentPlane.getClosedAreas().contains(l)) {
+                fileWriter.write(l + "");
+                fileWriter.write(l.getSize() + "\n");
+            }
+        }
+
+
         fileWriter.close();
         if (result)
             logger.info("File creato con successo");
@@ -166,7 +175,7 @@ public class DefaultController implements Controller<Point<Double>> {
         }
         try {
             double d = Double.parseDouble(s);
-           // System.out.println(d);
+            // System.out.println(d);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -257,7 +266,7 @@ public class DefaultController implements Controller<Point<Double>> {
                 log.append(s).append(" ");
             logger.setUseParentHandlers(false);
             logger.info("Istruzione eseguita: " + log);
-            System.out.println("------------------------");
+            System.out.print("\t\n");
         }
         this.previousPlane.addFirst(this.currentPlane);
         this.currentPlane = generatedPlane;
@@ -271,7 +280,7 @@ public class DefaultController implements Controller<Point<Double>> {
         this.configurationInstructions = new LinkedList<>();
         this.previousPlane = new LinkedList<>();
         this.nextPlane = new LinkedList<>();
-        this.allInstructions= new LinkedList<>();
+        this.allInstructions = new LinkedList<>();
         logger.info("Tutte le configurazioni sono state cancellate");
     }
 

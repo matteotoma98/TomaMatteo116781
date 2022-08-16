@@ -34,7 +34,7 @@ class RGBColorTest {
         int b = 0;
         RGBColor color = new RGBColor(r, g, b);
         String actual = color.toString();
-        assertEquals("RGBColors{r=0, g=0, b=0}", actual);
+        assertEquals("0 0 0", actual);
     }
 
 }

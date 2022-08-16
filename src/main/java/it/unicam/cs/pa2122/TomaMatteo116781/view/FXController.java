@@ -75,11 +75,11 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
     }
 
     private void createPlanePane() {
-        controller.newPlane(800, 400);
-        planePane.setMinHeight(400);
-        planePane.setMaxHeight(400);
-        planePane.setMinWidth(800);
-        planePane.setMaxWidth(800);
+        controller.newPlane(1000, 500);
+        planePane.setMinHeight(500);
+        planePane.setMaxHeight(500);
+        planePane.setMinWidth(1000);
+        planePane.setMaxWidth(1000);
         this.planePane.setStyle("-fx-border-color: black");
     }
 
@@ -314,17 +314,19 @@ public class FXController implements PlaneUpdateListener<Point<Double>> {
         File selectedFile = fileChooser.showSaveDialog(new Stage());
         bottomPane.setVisible(true);
         try {
-            if (controller.createLOGOFile(selectedFile.getAbsolutePath())) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
-                alert.setTitle("Salvataggio riuscito");
-                alert.setHeaderText("");
-                alert.setContentText("File creato con successo.");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == ButtonType.OK) {
-                    alert.close();
-                } else alert.close();
+            if (selectedFile != null) {
+                if (controller.createLOGOFile(selectedFile.getAbsolutePath())) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                    stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
+                    alert.setTitle("Salvataggio riuscito");
+                    alert.setHeaderText("");
+                    alert.setContentText("File creato con successo.");
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        alert.close();
+                    } else alert.close();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

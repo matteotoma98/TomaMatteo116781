@@ -98,22 +98,22 @@ class SimpleCursorTest {
 
     @Test
     public void testToString() {
-        Plane<Point<Double>> plane = new DefaultPlane(500, 500);
+        Plane<Point<Double>> plane = new DefaultPlane(1000, 500);
         String actual = plane.toString();
-        assertEquals("DefaultPlane{ length=500.0, height=500.0\n" +
-                "home=POINT(250.0,250.0)\n" +
+        assertEquals("DefaultPlane{ length=1000.0, height=500.0\n" +
+                "home=POINT(500.0,250.0)\n" +
                 "origin=POINT(0.0,0.0)\n" +
                 "cursor=SimpleCursor{\n" +
-                "position=POINT(250.0,250.0)\n" +
+                "position=POINT(500.0,250.0)\n" +
                 "direction=0\n" +
-                "lineColor=RGBColors{r=0, g=0, b=0}\n" +
-                "areaColor=RGBColors{r=255, g=255, b=255}\n" +
+                "lineColor=0 0 0\n" +
+                "areaColor=255 255 255\n" +
                 "plot=false\n" +
                 "pen=true\n" +
                 "penSize=1}\n" +
                 "lines=\n" +
                 "closedAreas=\n" +
-                "backgroundColor=RGBColors{r=255, g=255, b=255}\n" +
+                "backgroundColor=255 255 255\n" +
                 "}", actual);
     }
 }
