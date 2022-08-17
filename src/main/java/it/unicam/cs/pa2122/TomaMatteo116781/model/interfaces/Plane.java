@@ -71,7 +71,7 @@ public interface Plane<C> {
      *
      * @return l' insieme delle linee presenti nel piano.
      */
-    Queue<it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Line<C>> getLines();
+    Queue<Line<C>> getLines();
 
     /**
      * Ritorna il numero totale delle linee nel piano.
@@ -111,9 +111,11 @@ public interface Plane<C> {
     /**
      * Ritorna il cursore che si trova attualmente nel piano.
      * SimpleDirection per la direzione del cursore (l'angolo).
+     *
      * @return il cursore situato nel piano.
      */
-    <D extends Directional<?>> Cursor<C, SimpleDirection> getCursor();
+    Cursor<C, SimpleDirection> getCursor();
+
     /**
      * Ritorna l' insieme di tutte le aree chiuse presenti nel piano in ordine FIFO.
      *
@@ -167,9 +169,10 @@ public interface Plane<C> {
     /**
      * Ritorna la mappa con tutti i punti (e le loro caratteristiche).
      * Tipo integer per i punti.
+     *
      * @return la mappa dei punti con le caratteristiche che li identificano.
      */
-    <L> Map<C, Integer> getPoints();
+    Map<C, Integer> getPoints();
 
     /**
      * Restituisce il grafo dei punti nel piano.
@@ -220,12 +223,18 @@ public interface Plane<C> {
      *
      * @param listener il listener da aggiungere al piano per gli aggiornamenti.
      */
-    void addPlaneUpdateListener(PlaneUpdateListener<Point<Double>> listener);
+    /**
+     * Aggiunge il listener per gli aggiornamenti al piano.
+     *
+     * @param listener il listener da aggiungere al piano per gli aggiornamenti.
+     */
+    void addPlaneUpdateListener(PlaneListener<Point<Double>> listener);
 
     /**
      * Rimuove il listener dal piano.
      *
      * @param listener il listener da rimuovere dal piano.
      */
-    void removePlaneUpdateListener(PlaneUpdateListener<Point<Double>> listener);
+    void removePlaneUpdateListener(PlaneListener<Point<Double>> listener);
+
 }

@@ -7,7 +7,7 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
  *
  * @param <C> il tipo parametrico per le coordinate del punto nel piano.
  */
-public interface PlaneUpdateListener<C> {
+public interface PlaneListener<C> {
 
     /**
      * Metodo che indica che il cursore si &egrave; spostato in un punto specificato.

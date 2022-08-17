@@ -1,7 +1,7 @@
 package it.unicam.cs.pa2122.TomaMatteo116781.model;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Cursor;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Directional;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Direction;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Plane;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Point;
 
@@ -30,7 +30,7 @@ public class SimpleCursor implements Cursor<Point<Double>, SimpleDirection> {
      * @throws NullPointerException se il piano specificato &egrave; null.
      */
     public SimpleCursor(Plane<Point<Double>> plane) {
-        this(plane, plane.getHome(), Directional.defaultSimpleDirection(), new RGBColor(0, 0, 0), new RGBColor(255, 255, 255));
+        this(plane, plane.getHome(), Direction.defaultSimpleDirection(), new RGBColor(0, 0, 0), new RGBColor(255, 255, 255));
     }
 
     /**
@@ -77,7 +77,7 @@ public class SimpleCursor implements Cursor<Point<Double>, SimpleDirection> {
     public SimpleCursor(Plane<Point<Double>> plane, Cursor<Point<Double>, SimpleDirection> cursor) {
         this.plane = plane;
         this.position = Point.cartesianPoint(cursor.getPosition().getX(), cursor.getPosition().getY());
-        this.direction = Directional.simpleDirection(cursor.getDirection().getDirectionWay());
+        this.direction = Direction.simpleDirection(cursor.getDirection().getDirectionWay());
         this.lineColor = new RGBColor(cursor.getLineColor().getRed(), cursor.getLineColor().getGreen(), cursor.getLineColor().getBlue());
         this.areaColor = new RGBColor(cursor.getAreaColor().getRed(), cursor.getAreaColor().getGreen(), cursor.getAreaColor().getBlue());
         this.plot = cursor.isPlot();

@@ -31,7 +31,7 @@ import java.util.Optional;
 /**
  * View per rappresentare tutti i contenuti del package model e controllarli.
  */
-public class FXController implements PlaneUpdateListener<Point<Double>> {
+public class FXController implements PlaneListener<Point<Double>> {
 
     private final Controller<Point<Double>> controller = new DefaultController();
     @FXML

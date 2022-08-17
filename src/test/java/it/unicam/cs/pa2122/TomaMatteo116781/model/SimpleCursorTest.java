@@ -12,15 +12,15 @@ class SimpleCursorTest {
     @Test
     public void NullPointerExceptionShouldBeThrown() {
         assertThrows(NullPointerException.class, () -> new SimpleCursor(null));
-        assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), null, Directional.defaultSimpleDirection(), new RGBColor(0, 0, 0), new RGBColor(255, 0, 0)));
+        assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), null, Direction.defaultSimpleDirection(), new RGBColor(0, 0, 0), new RGBColor(255, 0, 0)));
         assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), Point.cartesianPoint(0, 0), null, new RGBColor(0, 0, 0), new RGBColor(255, 0, 0)));
-        assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), Point.cartesianPoint(0, 0), Directional.simpleDirection(2), null, new RGBColor(255, 0, 0)));
-        assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), Point.cartesianPoint(0, 0), Directional.simpleDirection(2), new RGBColor(255, 0, 0), null));
+        assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), Point.cartesianPoint(0, 0), Direction.simpleDirection(2), null, new RGBColor(255, 0, 0)));
+        assertThrows(NullPointerException.class, () -> new SimpleCursor(new DefaultPlane(100, 100), Point.cartesianPoint(0, 0), Direction.simpleDirection(2), new RGBColor(255, 0, 0), null));
     }
 
     @Test
     public void IllegalArgumentExceptionShouldBeThrown() {
-        assertThrows(IllegalArgumentException.class, () -> new SimpleCursor(new DefaultPlane(200, 200), Point.cartesianPoint(300, 190), Directional.defaultSimpleDirection(), new RGBColor(1, 2, 3), new RGBColor(4, 5, 6)));
+        assertThrows(IllegalArgumentException.class, () -> new SimpleCursor(new DefaultPlane(200, 200), Point.cartesianPoint(300, 190), Direction.defaultSimpleDirection(), new RGBColor(1, 2, 3), new RGBColor(4, 5, 6)));
         Cursor<Point<Double>, SimpleDirection> cursor = new SimpleCursor(new DefaultPlane(20, 20));
         assertThrows(IllegalArgumentException.class, () -> cursor.setPenSize(0));
     }
@@ -47,7 +47,7 @@ class SimpleCursorTest {
         assertEquals(Point.cartesianPoint(300, 250), plane.getCursorPosition());
         i = Instruction::left;
         plane = i.execute(plane, 156);
-        assertEquals(Directional.simpleDirection(156).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
+        assertEquals(Direction.simpleDirection(156).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
         i = Instruction::penUp;
         plane = i.execute(plane);
         assertFalse(plane.getCursor().isPen());

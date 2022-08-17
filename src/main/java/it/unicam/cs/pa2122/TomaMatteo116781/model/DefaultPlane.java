@@ -306,12 +306,12 @@ public class DefaultPlane implements Plane<Point<Double>> {
      */
 
     @Override
-    public synchronized void addPlaneUpdateListener(PlaneUpdateListener<Point<Double>> listener) {
+    public synchronized void addPlaneUpdateListener(PlaneListener<Point<Double>> listener) {
         this.planeUpdateSupport.addListener(listener);
     }
 
     @Override
-    public synchronized void removePlaneUpdateListener(PlaneUpdateListener<Point<Double>> listener) {
+    public synchronized void removePlaneUpdateListener(PlaneListener<Point<Double>> listener) {
         this.planeUpdateSupport.removeListener(listener);
     }
 }

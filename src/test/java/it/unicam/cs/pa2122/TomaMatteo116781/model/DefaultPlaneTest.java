@@ -35,8 +35,8 @@ class DefaultPlaneTest {
         p = i.execute(p, 90);
         i = Instruction::forward;
         p = i.execute(p, 6);
-        Line<Point<Double>> l0 = new Segment<>(Point.cartesianPoint(0, 4), Point.cartesianPoint(6, 4), p.getCursor().getLineColor(), p.getCursor().getPenSize());
-        Line<Point<Double>> l1 = new Segment<>(Point.cartesianPoint(6, 4), Point.cartesianPoint(6, 9), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        Line<Point<Double>> l0 = new SimpleLine<>(Point.cartesianPoint(0, 4), Point.cartesianPoint(6, 4), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        Line<Point<Double>> l1 = new SimpleLine<>(Point.cartesianPoint(6, 4), Point.cartesianPoint(6, 9), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         assertEquals(new HashSet<>(Arrays.asList(l0, l1)), p.getLinesAt(Point.cartesianPoint(6, 4)));
     }
 
@@ -52,7 +52,7 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(250, 300), p.getCursorPosition());
-        l0 = new Segment<>(p.getHome(), p.getCursorPosition(), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        l0 = new SimpleLine<>(p.getHome(), p.getCursorPosition(), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         assertTrue(p.getLines().contains(l0));
 
         i = Instruction::left;
@@ -62,7 +62,7 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(200, 300), p.getCursorPosition());
-        l1 = new Segment<>(p.getCursorPosition(), Point.cartesianPoint(250, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        l1 = new SimpleLine<>(p.getCursorPosition(), Point.cartesianPoint(250, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         // assertTrue(p.getLines().contains(l1)); //questo crea errore */
 
         i = Instruction::left;
@@ -72,7 +72,7 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(200, 250), p.getCursorPosition());
-        l2 = new Segment<>(p.getCursorPosition(), Point.cartesianPoint(200, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        l2 = new SimpleLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         //  assertTrue(p.getLines().contains(l2)); //questo crea errore
 
         i = Instruction::left;
@@ -82,7 +82,7 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(250, 250), p.getCursorPosition());
-        l3 = new Segment<>(p.getCursorPosition(), Point.cartesianPoint(200, 250), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        l3 = new SimpleLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 250), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         //  assertTrue(p.getLines().contains(l3)); //questo crea errore
 
 

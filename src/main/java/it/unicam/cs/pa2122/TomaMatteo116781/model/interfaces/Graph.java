@@ -33,7 +33,7 @@ public interface Graph<D> {
     void addArc(GraphNode<Integer, D> u, GraphNode<Integer, D> v);
 
     /**
-     * Ritorna (con una lista) e rimuove i nodi che formano un ciclo in un determinato grafo.
+     * Ritorna una lista e rimuove i nodi che formano un ciclo in un determinato grafo.
      * Se il grafo non contiene cicli, viene ritornata una lista vuota.
      *
      * @param u il nodo sorgente.

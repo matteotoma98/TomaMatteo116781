@@ -2,7 +2,7 @@ package it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.Segment;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleLine;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,7 +50,7 @@ public interface Instruction<C> {
             newDirection = (int) p.getCursor().getDirection().getDirectionWay() + degrees;
             newDirection = newDirection >= 360 ? (newDirection - 360) : newDirection;
         }
-        p.getCursor().setDirection(Directional.simpleDirection(newDirection));
+        p.getCursor().setDirection(Direction.simpleDirection(newDirection));
         return p;
     }
 
@@ -80,7 +80,7 @@ public interface Instruction<C> {
         checkCursorAtBorder(p, newPosition, oldPosition); //controlla che il cursore sia al bordo del piano
 
 
-        Line<Point<Double>> l = new Segment<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        Line<Point<Double>> l = new SimpleLine<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         if (p.getCursor().isPen()) {
             p.addLine(l);
             Logger.getGlobal().info("Linea creata: " + l);
@@ -101,12 +101,12 @@ public interface Instruction<C> {
      * @param newCursorPosition la nuova posizione del cursore da dover controllare.
      */
     static void checkCursorAtBorder(Plane<Point<Double>> plane, Point<Double> newCursorPosition, Point<Double> oldCursorPosition) {
-        Segment<Point<Double>> xDownAxis = new Segment<>(plane.getDownLeftPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
-                xUpAxis = new Segment<>(plane.getUpLeftPoint(), plane.getUpRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
-                yLeftAxis = new Segment<>(plane.getUpLeftPoint(), plane.getDownLeftPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
-                yRightAxis = new Segment<>(plane.getUpRightPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        SimpleLine<Point<Double>> xDownAxis = new SimpleLine<>(plane.getDownLeftPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
+                xUpAxis = new SimpleLine<>(plane.getUpLeftPoint(), plane.getUpRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
+                yLeftAxis = new SimpleLine<>(plane.getUpLeftPoint(), plane.getDownLeftPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
+                yRightAxis = new SimpleLine<>(plane.getUpRightPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
-       Line<Point<Double>> line = new Segment<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+       Line<Point<Double>> line = new SimpleLine<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
         Optional<Point<Double>> intersectionPoint = Optional.empty();
         if (newCursorPosition.getY() >= plane.getHeight()) {

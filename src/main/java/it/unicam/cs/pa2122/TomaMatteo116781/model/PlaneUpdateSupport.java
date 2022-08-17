@@ -2,7 +2,7 @@ package it.unicam.cs.pa2122.TomaMatteo116781.model;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.ClosedArea;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Line;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.PlaneUpdateListener;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.PlaneListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class PlaneUpdateSupport<C> {
 
-    List<PlaneUpdateListener<C>> listeners;
+    List<PlaneListener<C>> listeners;
 
     /**
      * Metodo per gestire i cambiamenti delle caratteristiche del piano.
@@ -29,7 +29,7 @@ public class PlaneUpdateSupport<C> {
      *
      * @param listener il listener da aggiungere.
      */
-    public synchronized void addListener(PlaneUpdateListener<C> listener) {
+    public synchronized void addListener(PlaneListener<C> listener) {
         if (listener == null) return;
         this.listeners.add(listener);
     }
@@ -39,7 +39,7 @@ public class PlaneUpdateSupport<C> {
      *
      * @param listener il listener da rimuovere.
      */
-    public synchronized void removeListener(PlaneUpdateListener<C> listener) {
+    public synchronized void removeListener(PlaneListener<C> listener) {
         if (listener == null) return;
         this.listeners.remove(listener);
     }
@@ -84,6 +84,6 @@ public class PlaneUpdateSupport<C> {
      * Metodo per notificare quando &egrave; stato pulito lo schermo.
      */
     public synchronized void ScreenCleaned() {
-        listeners.forEach(PlaneUpdateListener::ScreenCleaned);
+        listeners.forEach(PlaneListener::ScreenCleaned);
     }
 }

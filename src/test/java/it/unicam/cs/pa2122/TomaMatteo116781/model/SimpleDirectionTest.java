@@ -1,6 +1,6 @@
 package it.unicam.cs.pa2122.TomaMatteo116781.model;
 
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Directional;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Direction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +9,7 @@ class SimpleDirectionTest {
 
     @Test
     public void IllegalArgumentExceptionshouldBeThrown() {
-        Directional<Integer> direction = new SimpleDirection();
+        Direction<Integer> direction = new SimpleDirection();
         assertThrows(IllegalArgumentException.class, () -> direction.setDirectionWay(999));
         assertThrows(IllegalArgumentException.class, () -> direction.setDirectionWay(-123));
         assertEquals(0, (int) direction.getDirectionWay());
@@ -19,7 +19,7 @@ class SimpleDirectionTest {
 
     @Test
     public void directionShouldBeCreated() {
-        Directional<Integer> direction = new SimpleDirection();
+        Direction<Integer> direction = new SimpleDirection();
         assertEquals(0, (int) direction.getDirectionWay());
         direction.setDirectionWay(200);
         assertEquals(200, (int) direction.getDirectionWay());

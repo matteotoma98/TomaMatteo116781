@@ -10,8 +10,8 @@ import java.util.Objects;
  *
  * @param <C> il tipo parametrico per le coordinate del punto.
  */
-public record Segment<C>(C startingPoint, C endPoint, RGBColor color,
-                         int size) implements Line<C> {
+public record SimpleLine<C>(C startingPoint, C endPoint, RGBColor color,
+                            int size) implements Line<C> {
 
     /**
      * Crea una linea generica.
@@ -21,7 +21,7 @@ public record Segment<C>(C startingPoint, C endPoint, RGBColor color,
      * @param color         il colore della linea.
      * @param size          lo spessore della linea.
      */
-    public Segment {
+    public SimpleLine {
     }
 
     @Override
@@ -65,7 +65,7 @@ public record Segment<C>(C startingPoint, C endPoint, RGBColor color,
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Segment<?> line = (Segment<?>) o;
+        SimpleLine<?> line = (SimpleLine<?>) o;
         return size == line.size
                 && Objects.equals(startingPoint, line.startingPoint)
                 && Objects.equals(endPoint, line.endPoint)

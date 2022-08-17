@@ -6,7 +6,7 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirection;
  * Interfaccia che indica dove l'oggetto puograve; essere direzionato.
  * Cio&egrave; la direzione da seguire per una certa classe che implementa
  */
-public interface Directional<D> {
+public interface Direction<D> {
     /**
      * Metodo che crea un oggetto con le propriet&agrave; della direzione nel piano di disegno
      *

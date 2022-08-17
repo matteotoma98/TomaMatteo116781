@@ -35,18 +35,18 @@ class InstructionTest {
         assertEquals(plane.getHome(), plane.getCursorPosition());
         Instruction<Point<Double>> i = Instruction::left;
         plane = i.execute(plane, 180);
-        assertEquals(Directional.simpleDirection(180).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
+        assertEquals(Direction.simpleDirection(180).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
         i = Instruction::forward;
         plane = i.execute(plane, 20);
         assertEquals(Point.cartesianPoint(5.0, 50.0), plane.getCursor().getPosition());
         Point<Double> A = plane.getHome();
         Point<Double> B = Point.cartesianPoint(5, 50);
-        Line<Point<Double>> l0 = new Segment<>(A, B, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        Line<Point<Double>> l0 = new SimpleLine<>(A, B, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         assertTrue(plane.getLinesAt(Point.cartesianPoint(25, 50)).contains(l0));
         assertTrue(plane.getLines().contains(l0));
         i = Instruction::right;
         plane = i.execute(plane, 270);
-        assertEquals(Directional.simpleDirection(270).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
+        assertEquals(Direction.simpleDirection(270).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
         i = Instruction::forward;
         plane = i.execute(plane, 50);
         assertEquals(Point.cartesianPoint(5.0, 0.0), plane.getCursorPosition());
@@ -65,19 +65,19 @@ class InstructionTest {
         Instruction<Point<Double>> i = Instruction::right;
         plane = i.execute(plane, 45);
         assertFalse(plane.getCursor().isPlot());
-        assertEquals(Directional.simpleDirection(315).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
+        assertEquals(Direction.simpleDirection(315).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
         i = Instruction::backward;
         plane = i.execute(plane, 37);
         assertTrue(plane.getCursor().isPlot());
         assertEquals(Point.cartesianPoint(73.84, 226.16), plane.getCursor().getPosition());
         Point<Double> A = plane.getHome();
         Point<Double> B = Point.cartesianPoint(73.84, 226.16);
-        Line<Point<Double>> l0 = new Segment<>(A, B, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        Line<Point<Double>> l0 = new SimpleLine<>(A, B, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         assertTrue(plane.getLinesAt(plane.getHome()).contains(l0));
         assertTrue(plane.getLines().contains(l0));
         i = Instruction::right;
         plane = i.execute(plane, 270);
-        assertEquals(Directional.simpleDirection(45).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
+        assertEquals(Direction.simpleDirection(45).getDirectionWay(), plane.getCursor().getDirection().getDirectionWay());
         i = Instruction::forward;
         plane = i.execute(plane, 21);
         assertEquals(Point.cartesianPoint(88.69, 241.01), plane.getCursorPosition());
@@ -96,10 +96,10 @@ class InstructionTest {
     @Test
     public void screenShouldBeCleaned() {
         Plane<Point<Double>> plane = new DefaultPlane(200, 400);
-        plane.addLine(new Segment<>(Point.cartesianPoint(10, 20), Point.cartesianPoint(20, 30), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
-        plane.addLine(new Segment<>(Point.cartesianPoint(20, 30), Point.cartesianPoint(40, 20), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
-        plane.addLine(new Segment<>(Point.cartesianPoint(40, 20), Point.cartesianPoint(120, 17), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
-        plane.addLine(new Segment<>(Point.cartesianPoint(120, 17), Point.cartesianPoint(10, 20), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
+        plane.addLine(new SimpleLine<>(Point.cartesianPoint(10, 20), Point.cartesianPoint(20, 30), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
+        plane.addLine(new SimpleLine<>(Point.cartesianPoint(20, 30), Point.cartesianPoint(40, 20), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
+        plane.addLine(new SimpleLine<>(Point.cartesianPoint(40, 20), Point.cartesianPoint(120, 17), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
+        plane.addLine(new SimpleLine<>(Point.cartesianPoint(120, 17), Point.cartesianPoint(10, 20), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()));
         assertEquals(4, plane.getNumLines());
         assertEquals(1, plane.getNumClosedAreas());
         assertEquals(4, plane.getNumPoints());
@@ -147,7 +147,7 @@ class InstructionTest {
         assertTrue(plane.getCursor().isPlot());
         assertEquals(1, plane.getNumLines());
         assertEquals(2, plane.getNumPoints());
-        assertTrue(plane.getLinesAt(plane.getCursorPosition()).contains(new Segment<>(Point.cartesianPoint(200, 150), plane.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize())));
+        assertTrue(plane.getLinesAt(plane.getCursorPosition()).contains(new SimpleLine<>(Point.cartesianPoint(200, 150), plane.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize())));
     }
 
     @Test
@@ -207,10 +207,10 @@ class InstructionTest {
         i = Instruction::repeat;
         plane = i.execute(plane, 4, Arrays.asList("FORWARD", "50", "RIGHT", "90"));
         Line<Point<Double>> a, b, c, d;
-        a = new Segment<>(plane.getHome(), Point.cartesianPoint(550, 500), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
-        b = new Segment<>(Point.cartesianPoint(550, 500), Point.cartesianPoint(550, 450), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
-        c = new Segment<>(Point.cartesianPoint(550, 450), Point.cartesianPoint(500, 450), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
-        d = new Segment<>(Point.cartesianPoint(500, 450), plane.getHome(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        a = new SimpleLine<>(plane.getHome(), Point.cartesianPoint(550, 500), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        b = new SimpleLine<>(Point.cartesianPoint(550, 500), Point.cartesianPoint(550, 450), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        c = new SimpleLine<>(Point.cartesianPoint(550, 450), Point.cartesianPoint(500, 450), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        d = new SimpleLine<>(Point.cartesianPoint(500, 450), plane.getHome(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         ClosedArea<Line<Point<Double>>> expectedSquare = new SimpleArea(Arrays.asList(a, b, c, d),
                 new RGBColor(255, 10, 0));
         assertEquals(4, plane.getNumLines());

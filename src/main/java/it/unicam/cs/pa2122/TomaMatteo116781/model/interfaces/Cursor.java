@@ -14,7 +14,7 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
  * @param <C> rappresenta il tipo parametrico delle coordinate del punto nel piano.
  * @param <D> rappresenta il tipo parametrico per la direzione in cui punta il cursore nel piano.
  */
-public interface Cursor<C, D extends Directional<?>> {
+public interface Cursor<C, D extends Direction<?>> {
 
     /**
      * Restituisce le coordinate X e Y della posizione del cursore.
@@ -75,7 +75,7 @@ public interface Cursor<C, D extends Directional<?>> {
     void setAreaColor(RGBColor color);
 
     /**
-     * Questo parametro booleano indica se durante uno spostamento, il cursore genera o meno un tracciato.
+     * Indica se durante uno spostamento, il cursore genera o meno un tracciato.
      *
      * @return true se &egrave; stato generato un tracciato, false altrimenti.
      */

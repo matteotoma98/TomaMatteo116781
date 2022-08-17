@@ -1,6 +1,6 @@
 package it.unicam.cs.pa2122.TomaMatteo116781.model;
 
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Directional;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Direction;
 
 import java.util.Objects;
 
@@ -8,7 +8,7 @@ import java.util.Objects;
  * Classe per implementare i metodi per la direzione del cursore, data dall'angolo e nell'intervallo [0,360]
  */
 
-public class SimpleDirection implements Directional<Integer> {
+public class SimpleDirection implements Direction<Integer> {
 
     private int angle;
 

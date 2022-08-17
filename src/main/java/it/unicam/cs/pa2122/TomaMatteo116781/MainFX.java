@@ -21,7 +21,7 @@ public class MainFX extends Application {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/TomaMatteo116781.fxml")));
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
-            stage.setTitle("Logo in Java");
+            stage.setTitle("Logo Java Program - Unicam");
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
         } catch (Exception e) {
