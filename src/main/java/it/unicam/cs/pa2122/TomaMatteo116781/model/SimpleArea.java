@@ -14,9 +14,9 @@ import java.util.Objects;
  * In questo modo, è possibile rappresentare una semplice area tramite linee chiuse, formate da coppie di punti rappresentati
  * attraverso Double per aumentare la precisione.
  */
-public record SimpleArea(
-        List<Line<Point<Double>>> lines,
-        RGBColor color) implements ClosedArea<Line<Point<Double>>> {
+public class SimpleArea implements ClosedArea<Line<Point<Double>>> {
+    private final List<Line<Point<Double>>> lines;
+    private final RGBColor color;
 
     /**
      * Crea un' area chiusa nel piano individuata da un insieme di linee e determinati colori RGB.
@@ -25,7 +25,9 @@ public record SimpleArea(
      *              che individuano l' area chiusa.
      * @param color il colore RGB da impostare all' area chiusa.
      */
-    public SimpleArea {
+    public SimpleArea(List<Line<Point<Double>>> lines, RGBColor color) {
+        this.lines = lines;
+        this.color = color;
     }
 
     @Override

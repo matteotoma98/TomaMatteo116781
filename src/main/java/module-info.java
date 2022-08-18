@@ -8,6 +8,4 @@ module it.unicam.cs {
     exports it.unicam.cs.pa2122.TomaMatteo116781.view;
     exports it.unicam.cs.pa2122.TomaMatteo116781.model;
     exports it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces;
-
-    opens it.unicam.cs.pa2122.TomaMatteo116781.view to javafx.fxml;
 }

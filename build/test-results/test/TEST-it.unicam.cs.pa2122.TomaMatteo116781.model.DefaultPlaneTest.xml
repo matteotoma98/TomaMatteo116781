@@ -1,171 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-08-17T15:53:06" hostname="LAPTOP-OK1UH1OH" time="0.377">
+<testsuite name="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-08-18T09:38:15" hostname="LAPTOP-OK1UH1OH" time="0.398">
   <properties/>
-  <testcase name="pointsShouldBePartOfPlane()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.037"/>
-  <testcase name="oneClosedAreaShouldBeGeneratedTest()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.13"/>
+  <testcase name="pointsShouldBePartOfPlane()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.039"/>
+  <testcase name="oneClosedAreaShouldBeGeneratedTest()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.149"/>
   <testcase name="NullPointerExceptionShouldBeThrown()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.002"/>
-  <testcase name="noAreasShouldBeGenerated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.01"/>
-  <testcase name="linesShouldBeGenerated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.029"/>
+  <testcase name="noAreasShouldBeGenerated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.014"/>
+  <testcase name="linesShouldBeGenerated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.03"/>
   <testcase name="planeShouldBeCreated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.006"/>
-  <testcase name="someClosedAreaShouldBeGenerated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.102"/>
-  <testcase name="linesNotShouldBePartOfClosedArea()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.055"/>
+  <testcase name="someClosedAreaShouldBeGenerated()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.095"/>
+  <testcase name="linesNotShouldBePartOfClosedArea()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.058"/>
   <testcase name="IllegalArgumentExceptionShouldBeThrown()" classname="it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlaneTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+  <system-err><![CDATA[ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(250.0,300.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(250.0,250.0) , POINT(250.0,300.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(200.0,300.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(250.0,300.0) , POINT(200.0,300.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(200.0,250.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(200.0,300.0) , POINT(200.0,250.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(250.0,250.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
 INFO: Generated closed area: AREA{ lines= 
 L{ POINT(250.0,250.0) , POINT(250.0,300.0) color = 0 0 0 } 
 L{ POINT(250.0,300.0) , POINT(200.0,300.0) color = 0 0 0 } 
 L{ POINT(200.0,300.0) , POINT(200.0,250.0) color = 0 0 0 } 
 L{ POINT(200.0,250.0) , POINT(250.0,250.0) color = 0 0 0 } 
 , color= 255 255 255 }
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(200.0,250.0) , POINT(250.0,250.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(600.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,500.0) , POINT(600.0,500.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(0.0,5.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Cursore mosso dalla posizione vecchiaPOINT(5.0,5.0) a quella nuova POINT(0.0,5.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(0.0,4.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Cursore mosso dalla posizione vecchiaPOINT(0.0,5.0) a quella nuova POINT(0.0,4.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(6.0,4.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(0.0,4.0) , POINT(6.0,4.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Punto d'intersezione:  Optional[POINT(6.0,9.0)]
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(6.0,9.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(6.0,4.0) , POINT(6.0,9.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(510.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,500.0) , POINT(510.0,500.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(510.0,490.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(510.0,500.0) , POINT(510.0,490.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,490.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(510.0,490.0) , POINT(500.0,490.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
 INFO: Generated closed area: AREA{ lines= 
 L{ POINT(500.0,500.0) , POINT(510.0,500.0) color = 0 0 0 } 
 L{ POINT(510.0,500.0) , POINT(510.0,490.0) color = 0 0 0 } 
 L{ POINT(510.0,490.0) , POINT(500.0,490.0) color = 0 0 0 } 
 L{ POINT(500.0,490.0) , POINT(500.0,500.0) color = 0 0 0 } 
 , color= 255 255 255 }
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,490.0) , POINT(500.0,500.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Cursore mosso dalla posizione vecchiaPOINT(500.0,500.0) a quella nuova POINT(500.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,610.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,600.0) , POINT(500.0,610.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(510.0,610.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,610.0) , POINT(510.0,610.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(510.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(510.0,610.0) , POINT(510.0,600.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
 INFO: Generated closed area: AREA{ lines= 
 L{ POINT(500.0,600.0) , POINT(500.0,610.0) color = 0 0 0 } 
 L{ POINT(500.0,610.0) , POINT(510.0,610.0) color = 0 0 0 } 
 L{ POINT(510.0,610.0) , POINT(510.0,600.0) color = 0 0 0 } 
 L{ POINT(510.0,600.0) , POINT(500.0,600.0) color = 0 0 0 } 
 , color= 255 255 255 }
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(510.0,600.0) , POINT(500.0,600.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(700.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Cursore mosso dalla posizione vecchiaPOINT(500.0,600.0) a quella nuova POINT(700.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(700.0,550.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(700.0,600.0) , POINT(700.0,550.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(656.7,575.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(700.0,550.0) , POINT(656.7,575.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(700.0,600.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
 INFO: Generated closed area: AREA{ lines= 
 L{ POINT(700.0,600.0) , POINT(700.0,550.0) color = 0 0 0 } 
 L{ POINT(700.0,550.0) , POINT(656.7,575.0) color = 0 0 0 } 
 L{ POINT(656.7,575.0) , POINT(700.0,600.0) color = 0 0 0 } 
 , color= 255 255 255 }
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(656.7,575.0) , POINT(700.0,600.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(550.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,500.0) , POINT(550.0,500.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(550.0,450.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(550.0,500.0) , POINT(550.0,450.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,450.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(550.0,450.0) , POINT(500.0,450.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane addLine
 INFO: Generated closed area: AREA{ lines= 
 L{ POINT(500.0,500.0) , POINT(550.0,500.0) color = 0 0 0 } 
 L{ POINT(550.0,500.0) , POINT(550.0,450.0) color = 0 0 0 } 
 L{ POINT(550.0,450.0) , POINT(500.0,450.0) color = 0 0 0 } 
 L{ POINT(500.0,450.0) , POINT(500.0,500.0) color = 0 0 0 } 
 , color= 255 0 0 }
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,450.0) , POINT(500.0,500.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(550.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,500.0) , POINT(550.0,500.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(550.0,450.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(550.0,500.0) , POINT(550.0,450.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,450.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(550.0,450.0) , POINT(500.0,450.0) color = 0 0 0 } 
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction checkCursorAtBorder
 INFO: Posizione attuale del cursore POINT(500.0,500.0)
-ago 17, 2022 5:53:06 PM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
+ago 18, 2022 11:38:15 AM it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction move
 INFO: Linea creata: L{ POINT(500.0,450.0) , POINT(500.0,500.0) color = 0 0 0 } 
 ]]></system-err>
 </testsuite>

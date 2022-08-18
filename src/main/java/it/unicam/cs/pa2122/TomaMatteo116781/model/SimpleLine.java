@@ -10,8 +10,12 @@ import java.util.Objects;
  *
  * @param <C> il tipo parametrico per le coordinate del punto.
  */
-public record SimpleLine<C>(C startingPoint, C endPoint, RGBColor color,
-                            int size) implements Line<C> {
+public class SimpleLine<C> implements Line<C> {
+
+    private final C startingPoint;
+    private final C endPoint;
+    private final RGBColor color;
+    private final int size;
 
     /**
      * Crea una linea generica.
@@ -21,7 +25,11 @@ public record SimpleLine<C>(C startingPoint, C endPoint, RGBColor color,
      * @param color         il colore della linea.
      * @param size          lo spessore della linea.
      */
-    public SimpleLine {
+    public SimpleLine(C startingPoint, C endPoint, RGBColor color, int size) {
+        this.startingPoint = startingPoint;
+        this.endPoint = endPoint;
+        this.color = color;
+        this.size = size;
     }
 
     @Override

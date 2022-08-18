@@ -5,10 +5,11 @@ import it.unicam.cs.pa2122.TomaMatteo116781.model.GraphNode;
 import java.util.List;
 import java.util.Map;
 
-/** La seguente interfaccia serve per rappresentare i dati tramite dei grafi, per cercare quelli che formano un ciclo e rimuoverli.
- *
- *
- *
+/**
+ * La seguente interfaccia serve per rappresentare i dati tramite dei grafi, per cercare quelli che formano un ciclo e rimuoverli.
+ * <p>
+ * <p>
+ * <p>
  * Rappresenta un grafo per controllare i dati adiacenti.
  * Se c'&egrave; un ciclo nel grafo, questo viene ritornato e rimosso dal grafo.
  *

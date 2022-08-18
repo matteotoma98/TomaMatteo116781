@@ -53,17 +53,24 @@ public class FXController implements PlaneListener<Point<Double>> {
     @FXML
     public Button nextButton;
 
+    /**
+     * Istruzioni eseguite nella textfield, da
+     * rimuovere dalla lista di tutte le istruzioni
+     */
 
-    private List<Integer> executeTextFieldInstructions; // Istruzioni eseguite nella textfield, da
-    // rimuovere dalla lista di tutte le istruzioni
-    private int i; // Contatore istruzione attuale
+    private List<Integer> executeTextFieldInstructions;
+
+    /**
+     * Contatore istruzione attuale
+     */
+    private int i;
 
     @FXML
     public void initialize() {
         i = 0;
         setCartesianCoordinates();
         createPlanePane();
-        createRectangle();
+        createRectangleOnPlane();
         createCursor();
         bottomPane.setVisible(false);
         previousButton.setDisable(true);
@@ -83,9 +90,10 @@ public class FXController implements PlaneListener<Point<Double>> {
         this.planePane.setStyle("-fx-border-color: black");
     }
 
-    private void createRectangle() {
+    private void createRectangleOnPlane() {
         Rectangle rectangle = new Rectangle(planePane.getMaxWidth(), planePane.getMaxHeight());
-        rectangle.setFill(Color.rgb(controller.getPlane().getBackgroundColor().getRed(), controller.getPlane().getBackgroundColor().getGreen(), controller.getPlane().getBackgroundColor().getBlue()));
+        rectangle.setFill(Color.rgb(controller.getPlane().getBackgroundColor().getRed(),
+                controller.getPlane().getBackgroundColor().getGreen(), controller.getPlane().getBackgroundColor().getBlue()));
         planePane.getChildren().add(0, rectangle);
     }
 
@@ -117,7 +125,7 @@ public class FXController implements PlaneListener<Point<Double>> {
      *                    quando si verifica l'azione specifica del componente (come la pressione)
      * @throws IOException lancia un'eccezione di tipo Input/Output se non riesce a caricare il file.
      */
-    public void caricaFile(ActionEvent actionEvent) throws IOException {
+    public boolean caricaFile(ActionEvent actionEvent) throws IOException {
         this.reset(actionEvent);
         controller.getAllInstructions().clear();
         FileChooser fileChooser = new FileChooser();
@@ -137,12 +145,15 @@ public class FXController implements PlaneListener<Point<Double>> {
                 alert.close();
             } else alert.close();
         }
-        if (selectedFile != null) controller.loadInstructions(selectedFile.getAbsolutePath());
-
-        bottomPane.setVisible(true);
+        if (selectedFile != null) {
+            controller.loadInstructions(selectedFile.getAbsolutePath());
+            bottomPane.setVisible(true);
+            return true;
+        }
+        return false;
     }
 
-    public void startExecution(ActionEvent actionEvent) {
+    public void autoExecution(ActionEvent actionEvent) {
         StringBuilder text = new StringBuilder();
         while (i < this.controller.getAllInstructions().size()) {
             controller.execute(controller.getAllInstructions().get(i));
@@ -155,6 +166,7 @@ public class FXController implements PlaneListener<Point<Double>> {
         previousButton.setDisable(false);
         if (i == controller.getAllInstructions().size())
             nextButton.setDisable(true);
+
     }
 
     @Override

@@ -79,7 +79,6 @@ public interface Instruction<C> {
 
         checkCursorAtBorder(p, newPosition, oldPosition); //controlla che il cursore sia al bordo del piano
 
-
         Line<Point<Double>> l = new SimpleLine<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         if (p.getCursor().isPen()) {
             p.addLine(l);
@@ -106,7 +105,7 @@ public interface Instruction<C> {
                 yLeftAxis = new SimpleLine<>(plane.getUpLeftPoint(), plane.getDownLeftPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
                 yRightAxis = new SimpleLine<>(plane.getUpRightPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
-       Line<Point<Double>> line = new SimpleLine<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        Line<Point<Double>> line = new SimpleLine<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
         Optional<Point<Double>> intersectionPoint = Optional.empty();
         if (newCursorPosition.getY() >= plane.getHeight()) {

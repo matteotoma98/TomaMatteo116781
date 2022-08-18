@@ -1,6 +1,8 @@
 package it.unicam.cs.pa2122.TomaMatteo116781;
 
+import it.unicam.cs.pa2122.TomaMatteo116781.view.FXController;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +23,7 @@ public class MainFX extends Application {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/TomaMatteo116781.fxml")));
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
-            stage.setTitle("Logo Java Program - Unicam");
+            stage.setTitle("Logo Java Program - TomaMatteo116781");
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
         } catch (Exception e) {

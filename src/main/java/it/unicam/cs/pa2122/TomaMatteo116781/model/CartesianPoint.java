@@ -6,11 +6,11 @@ import java.util.Objects;
 
 /**
  * Implementazione del punto cartesiano avente una coppia di coordinate in double, per aumentare la precisione.
- * Viene utilizzato l'identificatore Record visto che &egrave; una classe di dati immutabili che richiedono solo
- * il tipo e il nome dei campi.
  */
 
-public record CartesianPoint(Double x, Double y) implements Point<Double> {
+public class CartesianPoint implements Point<Double> {
+    private final Double x;
+    private final Double y;
 
     /**
      * Creazione di un generico punto cartesiano nel piano.
@@ -18,7 +18,9 @@ public record CartesianPoint(Double x, Double y) implements Point<Double> {
      * @param x l' ascissa del punto.
      * @param y l' ordinata del punto.
      */
-    public CartesianPoint {
+    public CartesianPoint(Double x, Double y) {
+        this.x = x;
+        this.y = y;
     }
 
     @Override

@@ -16,8 +16,8 @@ public class DefaultPlane implements Plane<Point<Double>> {
     private final Queue<ClosedArea<Line<Point<Double>>>> closedAreas;
     private final Graph<Point<Double>> graph;
     private final Map<Point<Double>, Integer> points;
-    private RGBColor backgroundColor;
     private final PlaneUpdateSupport<Point<Double>> planeUpdateSupport;
+    private RGBColor backgroundColor;
 
     /**
      * Crea un piano geometrico con le caratteristiche di default del piano di disegno.
@@ -36,7 +36,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
      * @param height l' altezza del piano.
      * @param home   la posizione al centro del piano.
      * @param origin l' origine del piano.
-     * @throws NullPointerException se la posizione home o la posizione origine &egrave; null
+     * @throws NullPointerException     se la posizione home o la posizione origine &egrave; null
      * @throws IllegalArgumentException se la base del piano o l' altezza sono < di due o se la posizione home e
      *                                  la posizione origine sono punti non appartenenti al piano.
      */

@@ -157,8 +157,6 @@ public class DefaultController implements Controller<Point<Double>> {
                 fileWriter.write(l.getSize() + "\n");
             }
         }
-
-
         fileWriter.close();
         if (result)
             logger.info("File creato con successo");

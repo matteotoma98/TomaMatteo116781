@@ -79,8 +79,8 @@ class FXControllerTest {
 
         try {
             if (actionEvent == null) {
-                fxControllerUnderTest.startExecution(actionEvent);
-                assertThrows(IOException.class, () -> fxControllerUnderTest.startExecution(actionEvent));
+                fxControllerUnderTest.autoExecution(actionEvent);
+                assertThrows(IOException.class, () -> fxControllerUnderTest.autoExecution(actionEvent));
             }
         } catch (Exception e) {
             System.out.println(e);
