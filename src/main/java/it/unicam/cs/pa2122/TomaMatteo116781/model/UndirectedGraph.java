@@ -170,7 +170,6 @@ public final class UndirectedGraph<D> implements Graph<D> {
             cycle.add(nodes.get(x));
             this.nodes.remove(x);
             this.matrix.get(x).clear();
-            //se il grafo contiene dei cicli, viene rimosso
             for (List<GraphNode<Integer, D>> graphNodes : this.matrix)
                 graphNodes.removeIf(cycle::contains);
         }

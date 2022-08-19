@@ -23,24 +23,18 @@ class FXControllerTest {
 
     @Test
     void testInitialize() {
-        // Setup
-        // Run the test
-
         try {
             fxControllerUnderTest.initialize();
             assertThrows(IOException.class, () -> fxControllerUnderTest.initialize());
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
+
     }
 
     @Test
     void testCaricaFile() throws Exception {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
 
         try {
             if (actionEvent == null) {
@@ -51,14 +45,12 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testCaricaFile_ThrowsIOException() {
-        // Setup
+
         final ActionEvent actionEvent = new ActionEvent("source", null);
-        // Run the test
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.caricaFile(actionEvent);
@@ -72,11 +64,7 @@ class FXControllerTest {
 
     @Test
     void testStartExecution() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
-
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.autoExecution(actionEvent);
@@ -85,15 +73,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testMovedCursor() {
-        // Setup
         final Point<Double> point = null;
-
-        // Run the test
         try {
             if (point == null) {
                 fxControllerUnderTest.MovedCursor(point);
@@ -102,16 +86,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        // Verify the results
     }
 
     @Test
     void testGeneratedLine() {
-        // Setup
         final Line<Point<Double>> line = null;
-
-        // Run the test
         try {
             if (line == null) {
                 fxControllerUnderTest.GeneratedLine(line);
@@ -120,16 +99,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        // Verify the results
     }
 
     @Test
     void testGeneratedArea() {
-        // Setup
         final ClosedArea<Line<Point<Double>>> area = null;
-
-        // Run the test
         try {
             if (area == null) {
                 fxControllerUnderTest.GeneratedArea(area);
@@ -138,16 +112,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testScreenColor() {
-        // Setup
         final RGBColor color = new RGBColor(0, 0, 0);
-
-        // Run the test
-
         try {
             if (color == null) {
                 fxControllerUnderTest.ScreenColor(color);
@@ -156,14 +125,12 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testScreenCleaned() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-        // Run the test
+
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.ScreenCleaned();
@@ -172,14 +139,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testPreviousPlane() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-// Run the test
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.previousPlane(actionEvent);
@@ -188,15 +152,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testNextPlane() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.nextPlane(actionEvent);
@@ -205,16 +165,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        // Verify the results
     }
 
     @Test
     void testReset() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.reset(actionEvent);
@@ -223,18 +178,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-
-        // Verify the results
     }
 
     @Test
     void testExit() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
-        // Verify the results
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.exit(actionEvent);
@@ -247,10 +195,7 @@ class FXControllerTest {
 
     @Test
     void testAboutAction() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.aboutAction(actionEvent);
@@ -259,15 +204,11 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-        // Verify the results
     }
 
     @Test
     void testSaveConfiguration() {
-        // Setup
         final ActionEvent actionEvent = new ActionEvent("source", null);
-
-        // Run the test
         try {
             if (actionEvent == null) {
                 fxControllerUnderTest.saveConfiguration(actionEvent);
@@ -276,8 +217,5 @@ class FXControllerTest {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-
-        // Verify the results
     }
 }

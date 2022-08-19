@@ -1,6 +1,6 @@
 package it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces;
 
-import it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirection;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.GenericDirection;
 
 /**
  * Interfaccia che indica dove l'oggetto puograve; essere direzionato.
@@ -12,8 +12,8 @@ public interface Direction<D> {
      *
      * @return la direzione di default nel piano di disegno.
      */
-    static SimpleDirection defaultSimpleDirection() {
-        return new SimpleDirection();
+    static GenericDirection defaultGenericDirection() {
+        return new GenericDirection();
     }
 
     /**
@@ -22,8 +22,8 @@ public interface Direction<D> {
      * @param angle l' angolo verso cui punta la direzione.
      * @return la direzione con l' angolo
      */
-    static SimpleDirection simpleDirection(int angle) {
-        return new SimpleDirection(angle);
+    static GenericDirection genericDirection(int angle) {
+        return new GenericDirection(angle);
     }
 
     /**

@@ -2,10 +2,7 @@ package it.unicam.cs.pa2122.TomaMatteo116781.controller;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.SyntaxInstructionErrorException;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Instruction;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Line;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Plane;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.Point;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -88,7 +85,6 @@ public class DefaultController implements Controller<Point<Double>> {
         if (!Files.exists(Path.of(filePath)))
             logger.severe("Path non esistente");
         else {
-            //Divide le linee del file con spazi vuoti
             List<String> lst = Files.lines(Path.of(filePath))
                     .map(l -> l.split(" "))
                     .flatMap(Arrays::stream).toList();
@@ -147,7 +143,7 @@ public class DefaultController implements Controller<Point<Double>> {
         File file = new File(outputFile.toString());
         boolean result = file.createNewFile();
         FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write("SIZE " + getPlane().getLength() + " " + getPlane().getHeight() + " "
+        fileWriter.write("SIZE " + getPlane().getLength()+ " " + getPlane().getHeight() + " "
                 + this.currentPlane.getCursor().getAreaColor() + "\n");
 
         fileWriter.write("POLYGON " + this.getPlane().getNumLines() + " " + this.currentPlane.getCursor().getAreaColor() + "\n");
@@ -173,7 +169,6 @@ public class DefaultController implements Controller<Point<Double>> {
         }
         try {
             double d = Double.parseDouble(s);
-            // System.out.println(d);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -286,8 +281,6 @@ public class DefaultController implements Controller<Point<Double>> {
     public void clearNext() {
         this.nextPlane.clear();
     }
-
-    //Se la sintassi dei comandi è sbagliata, viene lanciata un'eccezione
     private void checkLOGOSyntax(String instruction, int expectedSize, int size) {
         if (expectedSize != size)
             logger.log(Level.SEVERE, "Eccezione lanciata: " + new SyntaxInstructionErrorException("Errore di sintassi per l'istruzione: " + instruction));

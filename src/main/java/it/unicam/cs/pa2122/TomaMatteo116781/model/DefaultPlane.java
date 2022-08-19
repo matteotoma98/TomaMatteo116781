@@ -11,7 +11,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
     private final double height;
     private final Point<Double> home;
     private final Point<Double> origin;
-    private final Cursor<Point<Double>, SimpleDirection> cursor;
+    private final Cursor<Point<Double>, GenericDirection> cursor;
     private final Queue<Line<Point<Double>>> lines;
     private final Queue<ClosedArea<Line<Point<Double>>>> closedAreas;
     private final Graph<Point<Double>> graph;
@@ -56,8 +56,8 @@ public class DefaultPlane implements Plane<Point<Double>> {
         this.closedAreas = new ArrayDeque<>();
         this.home = home;
         this.origin = origin;
-        this.cursor = new SimpleCursor(this);
-        this.backgroundColor = new RGBColor(255, 255, 255); //imposta il colore dello sfondo a bianco come da specifiche
+        this.cursor = new GenericCursor(this);
+        this.backgroundColor = new RGBColor(255, 255, 255);
         this.graph = new UndirectedGraph<>();
         this.points = new HashMap<>();
         this.planeUpdateSupport = new PlaneUpdateSupport<>();
@@ -83,7 +83,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
         this.closedAreas.addAll(plane.getClosedAreas());
         this.home = plane.getHome();
         this.origin = plane.getOrigin();
-        this.cursor = new SimpleCursor(this, plane.getCursor());
+        this.cursor = new GenericCursor(this, plane.getCursor());
         this.backgroundColor = new RGBColor(plane.getBackgroundColor().getRed(), plane.getBackgroundColor().getGreen(),
                 plane.getBackgroundColor().getBlue());
         this.graph = new UndirectedGraph<>(plane.getGraph());
@@ -185,7 +185,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
     }
 
     @Override
-    public Cursor<Point<Double>, SimpleDirection> getCursor() {
+    public Cursor<Point<Double>, GenericDirection> getCursor() {
         return this.cursor;
     }
 
@@ -212,7 +212,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
                 else
                     l.add(this.lineExistsBetweenTwoPoints(area.orElse(null).get(i), area.orElse(null).get(i + 1)).orElse(null));
             }
-            ClosedArea<Line<Point<Double>>> closedArea = new SimpleArea(l, this.cursor.getAreaColor());
+            ClosedArea<Line<Point<Double>>> closedArea = new GenericaArea(l, this.cursor.getAreaColor());
             this.closedAreas.offer(closedArea);
             Logger.getGlobal().info("Generated closed area: " + closedArea);
             this.planeUpdateSupport.GeneratedArea(closedArea);
@@ -233,7 +233,6 @@ public class DefaultPlane implements Plane<Point<Double>> {
                     line = l;
             }
             if (line != null) {
-                //creazione del ciclo
                 List<Point<Double>> cycle = graph.getCycle(new GraphNode<>(this.points.get(line.getStartingPoint()),
                         line.getStartingPoint()), new GraphNode<>(0, null));
                 if (!cycle.isEmpty())

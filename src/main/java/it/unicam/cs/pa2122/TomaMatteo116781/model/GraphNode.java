@@ -69,4 +69,6 @@ public class GraphNode<L, D> {
     public String toString() {
         return "NODO [ " + name.toString() + " ]";
     }
+
+
 }

@@ -35,8 +35,8 @@ class DefaultPlaneTest {
         p = i.execute(p, 90);
         i = Instruction::forward;
         p = i.execute(p, 6);
-        Line<Point<Double>> l0 = new SimpleLine<>(Point.cartesianPoint(0, 4), Point.cartesianPoint(6, 4), p.getCursor().getLineColor(), p.getCursor().getPenSize());
-        Line<Point<Double>> l1 = new SimpleLine<>(Point.cartesianPoint(6, 4), Point.cartesianPoint(6, 9), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        Line<Point<Double>> l0 = new GenericLine<>(Point.cartesianPoint(0, 4), Point.cartesianPoint(6, 4), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        Line<Point<Double>> l1 = new GenericLine<>(Point.cartesianPoint(6, 4), Point.cartesianPoint(6, 9), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         assertEquals(new HashSet<>(Arrays.asList(l0, l1)), p.getLinesAt(Point.cartesianPoint(6, 4)));
     }
 
@@ -46,51 +46,45 @@ class DefaultPlaneTest {
         Line<Point<Double>> l0, l1, l2, l3;
         Instruction<Point<Double>> i = Instruction::left;
         p = i.execute(p, 90);
-        assertEquals(new SimpleDirection(90).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
+        assertEquals(new GenericDirection(90).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
 
 
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(250, 300), p.getCursorPosition());
-        l0 = new SimpleLine<>(p.getHome(), p.getCursorPosition(), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        l0 = new GenericLine<>(p.getHome(), p.getCursorPosition(), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         assertTrue(p.getLines().contains(l0));
 
         i = Instruction::left;
         p = i.execute(p, 90);
-        assertEquals(new SimpleDirection(180).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
+        assertEquals(new GenericDirection(180).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
 
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(200, 300), p.getCursorPosition());
-        l1 = new SimpleLine<>(p.getCursorPosition(), Point.cartesianPoint(250, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
-        // assertTrue(p.getLines().contains(l1)); //questo crea errore */
+        l1 = new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(250, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+
 
         i = Instruction::left;
         p = i.execute(p, 90);
-        assertEquals(new SimpleDirection(270).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
+        assertEquals(new GenericDirection(270).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
 
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(200, 250), p.getCursorPosition());
-        l2 = new SimpleLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
-        //  assertTrue(p.getLines().contains(l2)); //questo crea errore
+        l2 = new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+
 
         i = Instruction::left;
         p = i.execute(p, 90);
-        assertEquals(new SimpleDirection(0).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
-
+        assertEquals(new GenericDirection(0).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(250, 250), p.getCursorPosition());
-        l3 = new SimpleLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 250), p.getCursor().getLineColor(), p.getCursor().getPenSize());
-        //  assertTrue(p.getLines().contains(l3)); //questo crea errore
-
-
+        l3 = new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 250), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         assertEquals(4, p.getLines().size());
         assertEquals(1, p.getClosedAreas().size());
 
-
-        // assertEquals(Arrays.asList(l0, l1, l2, l3), Objects.requireNonNull(p.getClosedAreas().peek()).getArea()); // crea errore
     }
 
     @Test

@@ -1,8 +1,8 @@
 package it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces;
 
+import it.unicam.cs.pa2122.TomaMatteo116781.model.GenericDirection;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.PlaneUpdateSupport;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleDirection;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,25 +16,25 @@ public interface Plane<C> {
 
     /**
      * Metodo necessario a calcolare il punto d'intersezione di due linee.
+     * Calcola il determinante per poter calcolare il punto d'intersezione.
      *
      * @param a la prima linea.
      * @param b la seconda linea.
      * @return il punto d'intersezione tra la linea a e la linea b se esiste, Optional.isEmpty() altrimenti.
      */
     static Optional<Point<Double>> intersect(Line<Point<Double>> a, Line<Point<Double>> b) {
-        //si prendono le coordinate X e Y dei due estremi delle linee
         double x1 = a.getStartingPoint().getX(), y1 = a.getStartingPoint().getY(),
                 x2 = a.getEndPoint().getX(), y2 = a.getEndPoint().getY(),
                 x3 = b.getStartingPoint().getX(), y3 = b.getStartingPoint().getY(),
                 x4 = b.getEndPoint().getX(), y4 = b.getEndPoint().getY();
-        //si calcola il determinante
+
         double d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
         if (d == 0)
-            return Optional.empty(); //se il determinante è nullo, l'intersezione è vuota
+            return Optional.empty();
         double x = ((x3 - x4) * (x1 * y2 - y1 * x2) - (x1 - x2) * (x3 * y4 - y3 * x4)) / d;
         double y = ((y3 - y4) * (x1 * y2 - y1 * x2) - (y1 - y2) * (x3 * y4 - y3 * x4)) / d;
-        x = (x == -0.0) ? 0.0 : x; //se x è negativa la rende positiva
-        y = (y == -0.0) ? 0.0 : y; //se y è negativa la rende positiva
+        x = (x == -0.0) ? 0.0 : x;
+        y = (y == -0.0) ? 0.0 : y;
         return Optional.of(Point.cartesianPoint(Math.round(x * 100.0) / 100.0, Math.round(y * 100.0) / 100.0));
     }
 
@@ -110,11 +110,11 @@ public interface Plane<C> {
 
     /**
      * Ritorna il cursore che si trova attualmente nel piano.
-     * SimpleDirection per la direzione del cursore (l'angolo).
+     * GenericDirection per la direzione del cursore (l'angolo).
      *
      * @return il cursore situato nel piano.
      */
-    Cursor<C, SimpleDirection> getCursor();
+    Cursor<C, GenericDirection> getCursor();
 
     /**
      * Ritorna l' insieme di tutte le aree chiuse presenti nel piano in ordine FIFO.

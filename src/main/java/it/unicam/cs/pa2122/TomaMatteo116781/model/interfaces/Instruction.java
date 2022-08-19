@@ -2,7 +2,7 @@ package it.unicam.cs.pa2122.TomaMatteo116781.model.interfaces;
 
 import it.unicam.cs.pa2122.TomaMatteo116781.model.DefaultPlane;
 import it.unicam.cs.pa2122.TomaMatteo116781.model.RGBColor;
-import it.unicam.cs.pa2122.TomaMatteo116781.model.SimpleLine;
+import it.unicam.cs.pa2122.TomaMatteo116781.model.GenericLine;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,7 +50,7 @@ public interface Instruction<C> {
             newDirection = (int) p.getCursor().getDirection().getDirectionWay() + degrees;
             newDirection = newDirection >= 360 ? (newDirection - 360) : newDirection;
         }
-        p.getCursor().setDirection(Direction.simpleDirection(newDirection));
+        p.getCursor().setDirection(Direction.genericDirection(newDirection));
         return p;
     }
 
@@ -73,13 +73,13 @@ public interface Instruction<C> {
         double seno = Math.sin(Math.toRadians(degrees));
         double angleCos = operator == '-' ? -(dist * coseno) : (dist * coseno);
         double angleSin = operator == '-' ? -(dist * seno) : (dist * seno);
-        double newX = Math.round((p.getCursorPosition().getX() + angleCos) * 100.0) / 100.0; //calcola le nuove coordinate
+        double newX = Math.round((p.getCursorPosition().getX() + angleCos) * 100.0) / 100.0;
         double newY = Math.round((p.getCursorPosition().getY() + angleSin) * 100.0) / 100.0;
         Point<Double> newPosition = Point.cartesianPoint(newX, newY);
 
-        checkCursorAtBorder(p, newPosition, oldPosition); //controlla che il cursore sia al bordo del piano
+        checkCursorAtBorder(p, newPosition, oldPosition);
 
-        Line<Point<Double>> l = new SimpleLine<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        Line<Point<Double>> l = new GenericLine<>(oldPosition, p.getCursorPosition(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
         if (p.getCursor().isPen()) {
             p.addLine(l);
             Logger.getGlobal().info("Linea creata: " + l);
@@ -100,12 +100,12 @@ public interface Instruction<C> {
      * @param newCursorPosition la nuova posizione del cursore da dover controllare.
      */
     static void checkCursorAtBorder(Plane<Point<Double>> plane, Point<Double> newCursorPosition, Point<Double> oldCursorPosition) {
-        SimpleLine<Point<Double>> xDownAxis = new SimpleLine<>(plane.getDownLeftPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
-                xUpAxis = new SimpleLine<>(plane.getUpLeftPoint(), plane.getUpRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
-                yLeftAxis = new SimpleLine<>(plane.getUpLeftPoint(), plane.getDownLeftPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
-                yRightAxis = new SimpleLine<>(plane.getUpRightPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        GenericLine<Point<Double>> xDownAxis = new GenericLine<>(plane.getDownLeftPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
+                xUpAxis = new GenericLine<>(plane.getUpLeftPoint(), plane.getUpRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
+                yLeftAxis = new GenericLine<>(plane.getUpLeftPoint(), plane.getDownLeftPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize()),
+                yRightAxis = new GenericLine<>(plane.getUpRightPoint(), plane.getDownRightPoint(), plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
-        Line<Point<Double>> line = new SimpleLine<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
+        Line<Point<Double>> line = new GenericLine<>(oldCursorPosition, newCursorPosition, plane.getCursor().getLineColor(), plane.getCursor().getPenSize());
 
         Optional<Point<Double>> intersectionPoint = Optional.empty();
         if (newCursorPosition.getY() >= plane.getHeight()) {
@@ -125,8 +125,6 @@ public interface Instruction<C> {
             Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
         }
         plane.getCursor().setPosition(intersectionPoint.orElse(newCursorPosition));
-        // Logger.getGlobal().info("Plane if <) della height " + Plane.intersect(line,xUpAxis));
-        //  Logger.getGlobal().info("Punto d'intersezione:  " + intersectionPoint);
         Logger.getGlobal().info("Posizione attuale del cursore " + plane.getCursorPosition());
     }
 
@@ -291,7 +289,7 @@ public interface Instruction<C> {
         Plane<Point<Double>> p = new DefaultPlane(plane);
         int r = Integer.parseInt("" + args[0]), g = Integer.parseInt("" + args[1]), b = Integer.parseInt("" + args[2]);
         p.setBackgroundColor(new RGBColor(r, g, b));
-        p.getPlaneUpdateSupport().ScreenColorChanged(p.getBackgroundColor()); //cambia il colore dello sfondo
+        p.getPlaneUpdateSupport().ScreenColorChanged(p.getBackgroundColor());
         return p;
     }
 
