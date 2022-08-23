@@ -39,8 +39,39 @@ class GenericaAreaTest {
     }
 
     @Test
-    void testEquals() {
-        assertFalse(genericaAreaUnderTest.equals("o"));
+    public void ReflexiveTest()
+    {
+        var x = genericaAreaUnderTest;
+        assertEquals(x, x);
+    }
+
+    @Test
+    public void Transitive()
+    {
+        var x = genericaAreaUnderTest;
+        var y= genericaAreaUnderTest;
+        var z= genericaAreaUnderTest;
+        assertEquals(x, x);
+        assertEquals(y,z);
+        assertEquals(x,z);
+    }
+
+    @Test
+    public void SymmetricTest()
+    {
+        var x = genericaAreaUnderTest;
+        var y= genericaAreaUnderTest;
+
+        assertEquals(x, y);
+        assertEquals(y, x);
+        System.out.println(x);
+    }
+
+    @Test
+    public void NullTest()
+    {
+        var x = genericaAreaUnderTest;
+        assertNotEquals(null, x);
     }
 
     @Test

@@ -42,7 +42,7 @@ public class GenericCursor implements Cursor<Point<Double>, GenericDirection> {
      * @param direction in quale direzione punter&agrave; all' inizio il cursore nel piano.
      * @param lineColor il colore della linea.
      * @param areaColor il colore interno dell' area.
-     * @throws NullPointerException     se uno o pi&ugrave; uno dei parametri specificati &egrave; null.
+     * @throws NullPointerException se uno o pi&ugrave; uno dei parametri specificati &egrave; null.
      * @throws IllegalArgumentException se la posizione del cursore non &egrave; valida all' interno del piano specificato.
      */
     public GenericCursor(Plane<Point<Double>> plane, Point<Double> position, GenericDirection direction, RGBColor lineColor, RGBColor areaColor) {

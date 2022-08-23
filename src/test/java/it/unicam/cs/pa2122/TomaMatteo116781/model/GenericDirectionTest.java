@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GenericDirectionTest {
 
     @Test
-    public void IllegalArgumentExceptionshouldBeThrown() {
+    public void IllegalArgumentExceptionShouldBeThrown() {
         Direction<Integer> direction = new GenericDirection();
         assertThrows(IllegalArgumentException.class, () -> direction.setDirectionWay(999));
         assertThrows(IllegalArgumentException.class, () -> direction.setDirectionWay(-123));
@@ -32,7 +32,6 @@ class GenericDirectionTest {
     @Test
     public void testToString() {
         GenericDirection genericDirection = new GenericDirection();
-        int angle;
         String actual = genericDirection.toString();
         assertEquals("0", actual);
     }

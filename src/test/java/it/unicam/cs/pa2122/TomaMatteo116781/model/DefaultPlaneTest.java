@@ -43,7 +43,7 @@ class DefaultPlaneTest {
     @Test
     public void oneClosedAreaShouldBeGeneratedTest() {
         Plane<Point<Double>> p = new DefaultPlane(500, 500);
-        Line<Point<Double>> l0, l1, l2, l3;
+        Line<Point<Double>> l0;
         Instruction<Point<Double>> i = Instruction::left;
         p = i.execute(p, 90);
         assertEquals(new GenericDirection(90).getDirectionWay(), p.getCursor().getDirection().getDirectionWay());
@@ -62,7 +62,7 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(200, 300), p.getCursorPosition());
-        l1 = new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(250, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(250, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
 
 
         i = Instruction::left;
@@ -72,7 +72,7 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(200, 250), p.getCursorPosition());
-        l2 = new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 300), p.getCursor().getLineColor(), p.getCursor().getPenSize());
 
 
         i = Instruction::left;
@@ -81,10 +81,9 @@ class DefaultPlaneTest {
         i = Instruction::forward;
         p = i.execute(p, 50);
         assertEquals(Point.cartesianPoint(250, 250), p.getCursorPosition());
-        l3 = new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 250), p.getCursor().getLineColor(), p.getCursor().getPenSize());
+        new GenericLine<>(p.getCursorPosition(), Point.cartesianPoint(200, 250), p.getCursor().getLineColor(), p.getCursor().getPenSize());
         assertEquals(4, p.getLines().size());
         assertEquals(1, p.getClosedAreas().size());
-
     }
 
     @Test
@@ -143,7 +142,6 @@ class DefaultPlaneTest {
     public void NullPointerExceptionShouldBeThrown() {
         assertThrows(NullPointerException.class, () -> new DefaultPlane(200, 200, null, Point.cartesianPoint(0, 0)));
         assertThrows(NullPointerException.class, () -> new DefaultPlane(200, 200, Point.cartesianPoint(10, 20), null));
-        assertThrows(NullPointerException.class, () -> new DefaultPlane(200, 200, Point.cartesianPoint(10, 20), null));
         assertThrows(NullPointerException.class, () -> new DefaultPlane(300, 200, null, null));
     }
 
@@ -177,6 +175,8 @@ class DefaultPlaneTest {
         assertFalse(plane.isPartOfPlane(Point.cartesianPoint(110, 30)));
         assertTrue(plane.isPartOfPlane(Point.cartesianPoint(49, 69)));
         assertFalse(plane.isPartOfPlane(Point.cartesianPoint(50, 70)));
+        assertTrue(plane.isPartOfPlane(Point.cartesianPoint(39, 69)));
+        assertFalse(plane.isPartOfPlane(Point.cartesianPoint(60, 80)));
     }
 
 }

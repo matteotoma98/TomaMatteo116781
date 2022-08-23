@@ -36,7 +36,7 @@ public class DefaultPlane implements Plane<Point<Double>> {
      * @param height l' altezza del piano.
      * @param home   la posizione al centro del piano.
      * @param origin l' origine del piano.
-     * @throws NullPointerException     se la posizione home o la posizione origine &egrave; null
+     * @throws NullPointerException se la posizione home o la posizione origine &egrave; null
      * @throws IllegalArgumentException se la base del piano o l' altezza sono < di due o se la posizione home e
      *                                  la posizione origine sono punti non appartenenti al piano.
      */

@@ -223,11 +223,6 @@ public interface Plane<C> {
      *
      * @param listener il listener da aggiungere al piano per gli aggiornamenti.
      */
-    /**
-     * Aggiunge il listener per gli aggiornamenti al piano.
-     *
-     * @param listener il listener da aggiungere al piano per gli aggiornamenti.
-     */
     void addPlaneUpdateListener(PlaneListener<Point<Double>> listener);
 
     /**

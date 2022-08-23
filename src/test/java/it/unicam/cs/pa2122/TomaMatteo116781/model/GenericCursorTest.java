@@ -100,20 +100,21 @@ class GenericCursorTest {
     public void testToString() {
         Plane<Point<Double>> plane = new DefaultPlane(1000, 500);
         String actual = plane.toString();
-        assertEquals("DefaultPlane{ length=1000.0, height=500.0\n" +
-                "home=POINT(500.0,250.0)\n" +
-                "origin=POINT(0.0,0.0)\n" +
-                "cursor=GenericCursor{\n" +
-                "position=POINT(500.0,250.0)\n" +
-                "direction=0\n" +
-                "lineColor=0 0 0\n" +
-                "areaColor=255 255 255\n" +
-                "plot=false\n" +
-                "pen=true\n" +
-                "penSize=1}\n" +
-                "lines=\n" +
-                "closedAreas=\n" +
-                "backgroundColor=255 255 255\n" +
-                "}", actual);
+        assertEquals("""
+                DefaultPlane{ length=1000.0, height=500.0
+                home=POINT(500.0,250.0)
+                origin=POINT(0.0,0.0)
+                cursor=GenericCursor{
+                position=POINT(500.0,250.0)
+                direction=0
+                lineColor=0 0 0
+                areaColor=255 255 255
+                plot=false
+                pen=true
+                penSize=1}
+                lines=
+                closedAreas=
+                backgroundColor=255 255 255
+                }""", actual);
     }
 }

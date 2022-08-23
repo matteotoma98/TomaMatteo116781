@@ -44,10 +44,10 @@ public interface Instruction<C> {
         if (degrees < 0 || degrees > 360) throw new IllegalArgumentException("Angle out of range");
         int newDirection;
         if (direction == '-') {
-            newDirection = (int) p.getCursor().getDirection().getDirectionWay() - degrees;
+            newDirection = p.getCursor().getDirection().getDirectionWay() - degrees;
             newDirection = newDirection < 0 ? (newDirection + 360) : newDirection;
         } else {
-            newDirection = (int) p.getCursor().getDirection().getDirectionWay() + degrees;
+            newDirection = p.getCursor().getDirection().getDirectionWay() + degrees;
             newDirection = newDirection >= 360 ? (newDirection - 360) : newDirection;
         }
         p.getCursor().setDirection(Direction.genericDirection(newDirection));
@@ -68,7 +68,7 @@ public interface Instruction<C> {
         if (dist < 0) throw new IllegalArgumentException("Hai inserito una distanza negativa. Inseriscine una > di 0 ");
         Plane<Point<Double>> p = new DefaultPlane(plane);
         Point<Double> oldPosition = Point.cartesianPoint(p.getCursorPosition().getX(), p.getCursorPosition().getY());
-        int degrees = (int) p.getCursor().getDirection().getDirectionWay();
+        int degrees = p.getCursor().getDirection().getDirectionWay();
         double coseno = Math.cos(Math.toRadians(degrees));
         double seno = Math.sin(Math.toRadians(degrees));
         double angleCos = operator == '-' ? -(dist * coseno) : (dist * coseno);

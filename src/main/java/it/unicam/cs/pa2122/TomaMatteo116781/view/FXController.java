@@ -153,13 +153,13 @@ public class FXController implements PlaneListener<Point<Double>> {
         return false;
     }
 
-    public void autoExecution(ActionEvent actionEvent) {
+    public void autoExecution() {
         StringBuilder text = new StringBuilder();
-        while (i < this.controller.getAllInstructions().size()) {
-            controller.execute(controller.getAllInstructions().get(i));
-            text.append(controller.getAllInstructions().get(i)).append("\n");
-            i++;
-        }
+            while (i < this.controller.getAllInstructions().size()) {
+                controller.execute(controller.getAllInstructions().get(i));
+                text.append(controller.getAllInstructions().get(i)).append("\n");
+                i++;
+            }
         instructionArea.appendText(text.toString());
         autoButton.setDisable(true);
         saveButton.setDisable(false);
@@ -217,7 +217,7 @@ public class FXController implements PlaneListener<Point<Double>> {
         controller.clearNext();
     }
 
-    public void previousPlane(ActionEvent actionEvent) {
+    public void previousPlane() {
         if (controller.hasPrevious()) {
             i--;
             nextButton.setDisable(false);
@@ -229,7 +229,7 @@ public class FXController implements PlaneListener<Point<Double>> {
         }
     }
 
-    public void nextPlane(ActionEvent actionEvent) {
+    public void nextPlane() {
         previousButton.setDisable(false);
         if (controller.hasNext())
             configurationPlane(controller.next());
@@ -265,6 +265,7 @@ public class FXController implements PlaneListener<Point<Double>> {
 
     public void reset(ActionEvent actionEvent) {
         i = 0;
+        actionEvent.consume();
         planePane.getChildren().remove(2, planePane.getChildren().size());
         controller.getPlane().removePlaneUpdateListener(this);
         controller.clear();
@@ -281,7 +282,7 @@ public class FXController implements PlaneListener<Point<Double>> {
         controller.getPlane().addPlaneUpdateListener(this);
     }
 
-    public void exit(ActionEvent actionEvent) {
+    public void exit() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/AppIcon.png")).toString()));
@@ -295,7 +296,7 @@ public class FXController implements PlaneListener<Point<Double>> {
     }
 
 
-    public void aboutAction(ActionEvent actionEvent) {
+    public void aboutAction() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.setHeight(500);
@@ -318,7 +319,7 @@ public class FXController implements PlaneListener<Point<Double>> {
 
     }
 
-    public void saveConfiguration(ActionEvent actionEvent) {
+    public void saveConfiguration() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Specifica il nome del file da salvare");
         fileChooser.getExtensionFilters().addAll(
