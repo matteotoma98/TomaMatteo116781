@@ -12,11 +12,11 @@ public class GraphNode<L, D> {
     /**
      * Colori da associare ai nodi
      */
-    public static int COLOR_WHITE = 0;
+    public final static int COLOR_WHITE = 0;
 
-    public static int COLOR_GREY = 1;
+    public final static int COLOR_GREY = 1;
 
-    public static int COLOR_BLACK = 2;
+    public final static int COLOR_BLACK = 2;
 
     private final L name;
 
